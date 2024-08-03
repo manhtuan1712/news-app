@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/core/helpers/app_utils.dart';
 import 'package:news_app/my_app.dart';
@@ -8,6 +10,16 @@ Future<void> main() async {
   return runZonedGuarded(
     () async {
       await AppUtils.init();
+      FlutterError.onError =
+          FirebaseCrashlytics.instance.recordFlutterFatalError;
+      PlatformDispatcher.instance.onError = (error, stack) {
+        FirebaseCrashlytics.instance.recordError(
+          error,
+          stack,
+          fatal: true,
+        );
+        return true;
+      };
       runApp(
         const MyApp(),
       );
