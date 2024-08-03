@@ -1,0 +1,36 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:news_app/core/di/injection_container.dart' as di;
+import 'package:news_app/core/helpers/secure_storage.dart';
+import 'package:news_app/core/navigation/navigation_center.dart';
+
+class AppUtils {
+  static BuildContext get contextMain =>
+      NavigationCenter.navigatorKey.currentContext!;
+
+  static Future<void> init() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await di.init();
+    await di.sl<SecureStorage>().init();
+  }
+
+  static showToastMessage(
+    String message, {
+    BuildContext? context,
+  }) {
+    if (message.isNotEmpty) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        Fluttertoast.showToast(
+          msg: message,
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.TOP,
+          timeInSecForIosWeb: 2,
+          backgroundColor: Colors.black.withOpacity(0.6),
+          textColor: Colors.white,
+        );
+      });
+    }
+  }
+}
