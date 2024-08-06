@@ -16,5 +16,8 @@
   "firebaseAuthErrorDisable": "Tài khoản đã bị vô hiệu hoá",
   "firebaseAuthErrorNotFound": "Tài khoản không tồn tại",
   "firebaseAuthErrorWrongPassword": "Mật khẩu sai",
-  "firebaseAuthErrorGeneral": "Lỗi hệ thống, vui lòng thử lại sau"
+  "firebaseAuthErrorGeneral": "Lỗi hệ thống, vui lòng thử lại sau",
+  "mainHomeBottom": "Trang chủ",
+  "mainFavoriteBottom": "Yêu Thích",
+  "mainProfileBottom": "Hồ sơ"
 }

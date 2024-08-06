@@ -34,11 +34,14 @@ class AppUtils {
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.TOP,
             timeInSecForIosWeb: 2,
-            backgroundColor: Theme.of(context).colorScheme.scrim,
+            backgroundColor: Theme.of(context).colorScheme.secondaryFixedDim,
             textColor: Theme.of(context).colorScheme.surfaceDim,
           );
         },
       );
     }
   }
+
+  static double getBottomBarHeight() =>
+      42.0 + MediaQuery.paddingOf(contextMain).bottom + 18.0;
 }

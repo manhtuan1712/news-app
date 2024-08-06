@@ -4,6 +4,7 @@ class NavigationCenter {
   static final navigatorKey = GlobalKey<NavigatorState>();
   static const String loginScreen = 'login-screen';
   static const String signUpScreen = 'signup-screen';
+  static const String mainScreen = 'main-screen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {

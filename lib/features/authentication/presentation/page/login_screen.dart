@@ -10,6 +10,7 @@ import 'package:news_app/core/helpers/enums.dart';
 import 'package:news_app/core/navigation/navigation_center.dart';
 import 'package:news_app/features/authentication/presentation/cubit/login_cubit.dart';
 import 'package:news_app/features/authentication/presentation/page/sign_up_screen.dart';
+import 'package:news_app/features/main/presentation/page/main_screen.dart';
 import 'package:news_app/generated/l10n.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -68,6 +69,11 @@ class LoginScreenState extends State<LoginScreen> {
           listener: (context, state) {
             if (state is LoginSuccessState) {
               EasyLoading.dismiss();
+              NavigationCenter.goToScreen(
+                context,
+                NavigationCenter.mainScreen,
+                const MainScreen(),
+              );
             } else if (state is LoginLoadingState) {
               EasyLoading.show();
             } else if (state is LoginFailureState) {
