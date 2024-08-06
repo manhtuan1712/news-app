@@ -49,6 +49,96 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Don't have an account?`
+  String get loginDoNotHaveAnAccount {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'loginDoNotHaveAnAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up`
+  String get loginSignUp {
+    return Intl.message(
+      'Sign up',
+      name: 'loginSignUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login to your account`
+  String get loginToYourAccount {
+    return Intl.message(
+      'Login to your account',
+      name: 'loginToYourAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get loginEmail {
+    return Intl.message(
+      'Email',
+      name: 'loginEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get loginPassword {
+    return Intl.message(
+      'Password',
+      name: 'loginPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in`
+  String get loginSignIn {
+    return Intl.message(
+      'Sign in',
+      name: 'loginSignIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up`
+  String get signUp {
+    return Intl.message(
+      'Sign up',
+      name: 'signUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create your Account`
+  String get signUpCreateYourAccount {
+    return Intl.message(
+      'Create your Account',
+      name: 'signUpCreateYourAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get signUpConfirmPassword {
+    return Intl.message(
+      'Confirm Password',
+      name: 'signUpConfirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

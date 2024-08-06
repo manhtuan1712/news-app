@@ -21,5 +21,19 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'vi';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "loginDoNotHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Không có tài khoản?"),
+        "loginEmail": MessageLookupByLibrary.simpleMessage("Email"),
+        "loginPassword": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
+        "loginSignIn": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+        "loginSignUp": MessageLookupByLibrary.simpleMessage("Đăng ký"),
+        "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
+            "Đăng nhập vào tài khoản của bạn"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Đăng ký"),
+        "signUpConfirmPassword":
+            MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
+        "signUpCreateYourAccount":
+            MessageLookupByLibrary.simpleMessage("Tạo tài khoản của bạn")
+      };
 }

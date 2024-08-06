@@ -1,2 +1,11 @@
 {
+  "loginDoNotHaveAnAccount": "Không có tài khoản?",
+  "loginSignUp": "Đăng ký",
+  "loginToYourAccount": "Đăng nhập vào tài khoản của bạn",
+  "loginEmail": "Email",
+  "loginPassword": "Mật khẩu",
+  "loginSignIn": "Đăng nhập",
+  "signUp": "Đăng ký",
+  "signUpCreateYourAccount": "Tạo tài khoản của bạn",
+  "signUpConfirmPassword": "Xác nhận mật khẩu"
 }

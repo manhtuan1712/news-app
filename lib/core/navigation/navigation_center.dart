@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class NavigationCenter {
   static final navigatorKey = GlobalKey<NavigatorState>();
+  static const String loginScreen = 'login-screen';
+  static const String signUpScreen = 'signup-screen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -13,4 +15,19 @@ class NavigationCenter {
         );
     }
   }
+
+  static goToScreen(
+    BuildContext context,
+    String name,
+    Widget screen,
+  ) =>
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          settings: RouteSettings(
+            name: name,
+          ),
+          builder: (_) => screen,
+        ),
+      );
 }

@@ -1,2 +1,11 @@
 {
+  "loginDoNotHaveAnAccount": "Don't have an account?",
+  "loginSignUp": "Sign up",
+  "loginToYourAccount": "Login to your account",
+  "loginEmail": "Email",
+  "loginPassword": "Password",
+  "loginSignIn": "Sign in",
+  "signUp": "Sign up",
+  "signUpCreateYourAccount": "Create your Account",
+  "signUpConfirmPassword": "Confirm Password"
 }

@@ -1,125 +1,439 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static Color colorA084FA = const Color(0xFFA084FA);
+  // ---------- Light Theme ---------- //
+  static var light = ThemeColor(
+    colorTextPrimary: const Color(
+      0xFF231F20,
+    ),
+    colorTextSecondary: const Color(
+      0xFF6D6265,
+    ),
+    colorTextLink: const Color(
+      0xFF0E0AB1,
+    ),
+    colorBrandBlue: const Color(
+      0xFF2D5BD0,
+    ),
+    colorBrandBlue10: const Color(
+      0xFFE9EEFA,
+    ),
+    colorBackgroundPrimary: const Color(
+      0xFFFFFFFF,
+    ),
+    colorBackgroundSecondary: const Color(
+      0xFFF3EBE9,
+    ),
+    colorSystemSuccess: const Color(
+      0xFF0D942B,
+    ),
+    colorSystemError: const Color(
+      0xFFE02607,
+    ),
+    colorSystemWarning: const Color(
+      0xFFFE4F32,
+    ),
+    colorSystemInformative: const Color(
+      0xFF2D5BD0,
+    ),
+    colorGrey70: const Color(
+      0xFF413B3D,
+    ),
+    colorGrey60: const Color(
+      0xFF6D6265,
+    ),
+    colorGrey50: const Color(
+      0xFF8A8184,
+    ),
+    colorGrey40: const Color(
+      0xFFA7A1A3,
+    ),
+    colorGrey30: const Color(
+      0xFFC5C0C1,
+    ),
+    colorGrey20: const Color(
+      0xFFE2E0E0,
+    ),
+    colorGrey10: const Color(
+      0xFFF0EFF0,
+    ),
+    colorBlue70: const Color(
+      0xFF1B377D,
+    ),
+    colorBlue60: const Color(
+      0xFF416BD6,
+    ),
+    colorBlue50: const Color(
+      0xFF577CD9,
+    ),
+    colorBlue40: const Color(
+      0xFF819DE3,
+    ),
+    colorBlue30: const Color(
+      0xFFABBDEC,
+    ),
+    colorBlue20: const Color(
+      0xFFD5DEF6,
+    ),
+    colorBlue10: const Color(
+      0xFFEAEFFA,
+    ),
+    colorRed70: const Color(
+      0xFF861704,
+    ),
+    colorRed60: const Color(
+      0xFFB31E06,
+    ),
+    colorRed50: const Color(
+      0xFFE02607,
+    ),
+    colorRed40: const Color(
+      0xFFE65139,
+    ),
+    colorRed30: const Color(
+      0xFFEC7D6A,
+    ),
+    colorRed20: const Color(
+      0xFFF3A89C,
+    ),
+    colorRed10: const Color(
+      0xFFF9D4CD,
+    ),
+    colorGreen70: const Color(
+      0xFF08591A,
+    ),
+    colorGreen60: const Color(
+      0xFF0A7622,
+    ),
+    colorGreen50: const Color(
+      0xFF0D942B,
+    ),
+    colorGreen40: const Color(
+      0xFF57BD6D,
+    ),
+    colorGreen30: const Color(
+      0xFF7BD18F,
+    ),
+    colorGreen20: const Color(
+      0xFFA0E6B0,
+    ),
+    colorGreen10: const Color(
+      0xFFB3F0C0,
+    ),
+    colorOrange70: const Color(
+      0xFF9C301E,
+    ),
+    colorOrange60: const Color(
+      0xFFFE4F32,
+    ),
+    colorOrange50: const Color(
+      0xFFFE725B,
+    ),
+    colorOrange40: const Color(
+      0xFFFE9584,
+    ),
+    colorOrange30: const Color(
+      0xFFFFB9AD,
+    ),
+    colorOrange20: const Color(
+      0xFFFFCAC1,
+    ),
+    colorOrange10: const Color(
+      0xFFFFEDEA,
+    ),
+  );
 
-  static Color colorF6F1FE = const Color(0xFFF6F1FE);
+// ---------- Dark Theme ---------- //
+  static var dark = ThemeColor(
+    colorTextPrimary: const Color(
+      0xFFE0DCDD,
+    ),
+    colorTextSecondary: const Color(
+      0xFF9B8A8F,
+    ),
+    colorTextLink: const Color(
+      0xFF96ADE7,
+    ),
+    colorBrandBlue: const Color(
+      0xFF416BD6,
+    ),
+    colorBrandBlue10: const Color(
+      0xFF1A1A1A,
+    ),
+    colorBackgroundPrimary: const Color(
+      0xFF0D0D0D,
+    ),
+    colorBackgroundSecondary: const Color(
+      0xFF261815,
+    ),
+    colorSystemSuccess: const Color(
+      0xFF0FAB31,
+    ),
+    colorSystemError: const Color(
+      0xFFF72E0A,
+    ),
+    colorSystemWarning: const Color(
+      0xFFFE664B,
+    ),
+    colorSystemInformative: const Color(
+      0xFF416BD6,
+    ),
+    colorGrey70: const Color(
+      0xFF413B3D,
+    ),
+    colorGrey60: const Color(
+      0xFF6D6265,
+    ),
+    colorGrey50: const Color(
+      0xFF8A8184,
+    ),
+    colorGrey40: const Color(
+      0xFFA7A1A3,
+    ),
+    colorGrey30: const Color(
+      0xFFC5C0C1,
+    ),
+    colorGrey20: const Color(
+      0xFF3A3637,
+    ),
+    colorGrey10: const Color(
+      0xFF292929,
+    ),
+    colorBlue70: const Color(
+      0xFF204092,
+    ),
+    colorBlue60: const Color(
+      0xFF416BD6,
+    ),
+    colorBlue50: const Color(
+      0xFF6C8CDE,
+    ),
+    colorBlue40: const Color(
+      0xFF96ADE7,
+    ),
+    colorBlue30: const Color(
+      0xFFABBDEC,
+    ),
+    colorBlue20: const Color(
+      0xFF0E1C3F,
+    ),
+    colorBlue10: const Color(
+      0xFF1A1A1A,
+    ),
+    colorRed70: const Color(
+      0xFF9F1C05,
+    ),
+    colorRed60: const Color(
+      0xFFCC2406,
+    ),
+    colorRed50: const Color(
+      0xFFF72E0A,
+    ),
+    colorRed40: const Color(
+      0xFFE9664F,
+    ),
+    colorRed30: const Color(
+      0xFFEF9181,
+    ),
+    colorRed20: const Color(
+      0xFFF3A99C,
+    ),
+    colorRed10: const Color(
+      0xFF481309,
+    ),
+    colorGreen70: const Color(
+      0xFFA6F7B8,
+    ),
+    colorGreen60: const Color(
+      0xFF0C8E28,
+    ),
+    colorGreen50: const Color(
+      0xFF0FAB31,
+    ),
+    colorGreen40: const Color(
+      0xFF69C47D,
+    ),
+    colorGreen30: const Color(
+      0xFF8ED89E,
+    ),
+    colorGreen20: const Color(
+      0xFFA0E6AF,
+    ),
+    colorGreen10: const Color(
+      0xFF136226,
+    ),
+    colorOrange70: const Color(
+      0xFFB13822,
+    ),
+    colorOrange60: const Color(
+      0xFFFE664B,
+    ),
+    colorOrange50: const Color(
+      0xFFFE8974,
+    ),
+    colorOrange40: const Color(
+      0xFFFE9684,
+    ),
+    colorOrange30: const Color(
+      0xFF6B1101,
+    ),
+    colorOrange20: const Color(
+      0xFF570D00,
+    ),
+    colorOrange10: const Color(
+      0xFF171717,
+    ),
+  );
+}
 
-  static Color color7000FF = const Color(0xFF7000FF);
+class ThemeColor {
+  // ---------- Text Color ---------- //
+  Color colorTextPrimary;
 
-  static Color color7001FD = const Color(0xFF7001FD);
+  Color colorTextSecondary;
 
-  static Color colorD3B3FF = const Color(0xFFD3B3FF);
+  Color colorTextLink;
 
-  static Color colorFF865C = const Color(0xFFFF865C);
+  // ---------- Brand Color ---------- //
+  Color colorBrandBlue;
 
-  static Color colorE45252 = const Color(0xFFE45252);
+  Color colorBrandBlue10;
 
-  static Color colorFF2D2D = const Color(0xFFFF2D2D);
+  // ---------- Background Color ---------- //
+  Color colorBackgroundPrimary;
 
-  static Color color12B262 = const Color(0xFF12B262);
+  Color colorBackgroundSecondary;
 
-  static Color color007AFF = const Color(0xFF007AFF);
+  // ---------- System Color ---------- //
+  Color colorSystemSuccess;
 
-  static Color colorF8F8F8 = const Color(0xFFF8F8F8);
+  Color colorSystemError;
 
-  static Color color150E26 = const Color(0xFF150E26);
+  Color colorSystemWarning;
 
-  static Color color433D51 = const Color(0xFF433D51);
+  Color colorSystemInformative;
 
-  static Color color818A99 = const Color(0xFF818A99);
+  // ---------- Grey Color ---------- //
+  Color colorGrey70;
 
-  static Color colorB2B7C0 = const Color(0xFFB2B7C0);
+  Color colorGrey60;
 
-  static Color colorD6D9DE = const Color(0xFFD6D9DE);
+  Color colorGrey50;
 
-  static Color colorE3E4E7 = const Color(0xFFE3E4E7);
+  Color colorGrey40;
 
-  static Color colorEFF0F1 = const Color(0xFFEFF0F1);
+  Color colorGrey30;
 
-  static Color colorF5F5F6 = const Color(0xFFF5F5F6);
+  Color colorGrey20;
 
-  static Color colorEBEBF5 = const Color(0xFFEBEBF5);
+  Color colorGrey10;
 
-  static Color color787880 = const Color(0xFF787880);
+  // ---------- Blue Color ---------- //
+  Color colorBlue70;
 
-  static Color color1C1C1E = const Color(0xFF1C1C1E);
+  Color colorBlue60;
 
-  static Color color2C2C2E = const Color(0xFF2C2C2E);
+  Color colorBlue50;
 
-  static Color color8A77FF = const Color(0xFF8A77FF);
+  Color colorBlue40;
 
-  static Color color1E183E = const Color(0xFF1E183E);
+  Color colorBlue30;
 
-  static Color color724FFF = const Color(0xFF724FFF);
+  Color colorBlue20;
 
-  static Color colorFF875A = const Color(0xFFFF875A);
+  Color colorBlue10;
 
-  static Color colorF35A5A = const Color(0xFFF35A5A);
+  // ---------- Red Color ---------- //
+  Color colorRed70;
 
-  static Color color8E8E93 = const Color(0xFF8E8E93);
+  Color colorRed60;
 
-  static Color color636366 = const Color(0xFF636366);
+  Color colorRed50;
 
-  static Color color48484A = const Color(0xFF48484A);
+  Color colorRed40;
 
-  static Color color3A3A3C = const Color(0xFF3A3A3C);
+  Color colorRed30;
 
-  static Color color38383A = const Color(0xFF38383A);
+  Color colorRed20;
 
-  static Color colorEBE8F3 = const Color(0xFFEBE8F3);
+  Color colorRed10;
 
-  static Color colorC5C5CC = const Color(0xFFC5C5CC);
+  // ---------- Green Color ---------- //
+  Color colorGreen70;
 
-  static Color color8ABD37 = const Color(0xFF8ABD37);
+  Color colorGreen60;
 
-  static Color colorF76B1C = const Color(0xFFF76B1C);
+  Color colorGreen50;
 
-  static Color color979797 = const Color(0xFF979797);
+  Color colorGreen40;
 
-  static Color color0069C0 = const Color(0xFF0069C0);
+  Color colorGreen30;
 
-  static Color color6EC6FF = const Color(0xFF6EC6FF);
+  Color colorGreen20;
 
-  static Color colorF5F5F5 = const Color(0xFFF5F5F5);
+  Color colorGreen10;
 
-  static Color color9966F1 = const Color(0xFF9966F1);
+  // ---------- Orange Color ---------- //
+  Color colorOrange70;
 
-  static Color color1F1F1F = const Color(0xFF1F1F1F);
+  Color colorOrange60;
 
-  static Color color767680 = const Color(0xFF767680);
+  Color colorOrange50;
 
-  static Color color545458 = const Color(0xFF545458);
+  Color colorOrange40;
 
-  static Color color3C3C43 = const Color(0xFF3C3C43);
+  Color colorOrange30;
 
-  static Color color0A84FF = const Color(0xFF0A84FF);
+  Color colorOrange20;
 
-  static Color colorF6F2FC = const Color(0xFFF6F2FC);
+  Color colorOrange10;
 
-  static Color color43176E = const Color(0xFF43176E);
-
-  static Color color353535 = const Color(0xFF353535);
-
-  static Color color4285F4 = const Color(0xFF4285F4);
-
-  static Color colorA3A2AF = const Color(0xFFA3A2AF);
-
-  static Color colorF3F4F6 = const Color(0xFFF3F4F6);
-
-  static Color colorF7F7F7 = const Color(0xFFF7F7F7);
-
-  static Color colorF79E1B = const Color(0xFFF79E1B);
-
-  static Color color9F9F9F = const Color(0xFF9F9F9F);
-
-  static Color color12A918 = const Color(0xFF12A918);
-
-  static Color colorA6A6A6 = const Color(0xFFA6A6A6);
-
-  static Color colorEFEAFF = const Color(0xFFEFEAFF);
-
-  static Color color1C2129 = const Color(0xFF1C2129);
-
-  static Color color282828 = const Color(0xFF282828);
+  ThemeColor({
+    required this.colorBackgroundPrimary,
+    required this.colorBackgroundSecondary,
+    required this.colorBlue10,
+    required this.colorBlue20,
+    required this.colorBlue30,
+    required this.colorBlue40,
+    required this.colorBlue50,
+    required this.colorBlue60,
+    required this.colorBlue70,
+    required this.colorBrandBlue,
+    required this.colorBrandBlue10,
+    required this.colorGreen10,
+    required this.colorGreen20,
+    required this.colorGreen30,
+    required this.colorGreen40,
+    required this.colorGreen50,
+    required this.colorGreen60,
+    required this.colorGreen70,
+    required this.colorGrey10,
+    required this.colorGrey20,
+    required this.colorGrey30,
+    required this.colorGrey40,
+    required this.colorGrey50,
+    required this.colorGrey60,
+    required this.colorGrey70,
+    required this.colorOrange10,
+    required this.colorOrange20,
+    required this.colorOrange30,
+    required this.colorOrange40,
+    required this.colorOrange50,
+    required this.colorOrange60,
+    required this.colorOrange70,
+    required this.colorRed10,
+    required this.colorRed20,
+    required this.colorRed30,
+    required this.colorRed40,
+    required this.colorRed50,
+    required this.colorRed60,
+    required this.colorRed70,
+    required this.colorSystemError,
+    required this.colorSystemInformative,
+    required this.colorSystemSuccess,
+    required this.colorSystemWarning,
+    required this.colorTextLink,
+    required this.colorTextPrimary,
+    required this.colorTextSecondary,
+  });
 }
