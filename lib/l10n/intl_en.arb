@@ -16,5 +16,8 @@
   "firebaseAuthErrorDisable": "Account disabled",
   "firebaseAuthErrorNotFound": "Account does not exist",
   "firebaseAuthErrorWrongPassword": "Incorrect password",
-  "firebaseAuthErrorGeneral": "System error, please try again later"
+  "firebaseAuthErrorGeneral": "System error, please try again later",
+  "mainHomeBottom": "Home",
+  "mainFavoriteBottom": "Favorite",
+  "mainProfileBottom": "Profile"
 }

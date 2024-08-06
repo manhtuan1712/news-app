@@ -47,6 +47,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginSignUp": MessageLookupByLibrary.simpleMessage("Sign up"),
         "loginToYourAccount":
             MessageLookupByLibrary.simpleMessage("Login to your account"),
+        "mainFavoriteBottom": MessageLookupByLibrary.simpleMessage("Favorite"),
+        "mainHomeBottom": MessageLookupByLibrary.simpleMessage("Home"),
+        "mainProfileBottom": MessageLookupByLibrary.simpleMessage("Profile"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
         "signUpConfirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),

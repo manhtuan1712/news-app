@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SecureStorage {
   static const String apiToken = 'apiToken';
   static const String isFirstTime = 'isFirstTime';
+  static const String user = 'user';
 
   final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
 
@@ -17,6 +19,7 @@ class SecureStorage {
     bool firstTime = prefs.getBool(isFirstTime) ?? true;
     if (firstTime) {
       _secureStorage.deleteAll();
+      await FirebaseAuth.instance.signOut();
       prefs.setBool(isFirstTime, false);
     }
   }

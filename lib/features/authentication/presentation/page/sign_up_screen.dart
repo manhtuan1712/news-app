@@ -6,7 +6,9 @@ import 'package:news_app/core/base/widget/base_text_field_widget.dart';
 import 'package:news_app/core/helpers/app_constants.dart';
 import 'package:news_app/core/helpers/app_utils.dart';
 import 'package:news_app/core/helpers/enums.dart';
+import 'package:news_app/core/navigation/navigation_center.dart';
 import 'package:news_app/features/authentication/presentation/cubit/sign_up_cubit.dart';
+import 'package:news_app/features/main/presentation/page/main_screen.dart';
 import 'package:news_app/generated/l10n.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -72,6 +74,11 @@ class SignUpScreenState extends State<SignUpScreen> {
           listener: (context, state) {
             if (state is SignUpSuccessState) {
               EasyLoading.dismiss();
+              NavigationCenter.goToScreen(
+                context,
+                NavigationCenter.mainScreen,
+                const MainScreen(),
+              );
             } else if (state is SignUpLoadingState) {
               EasyLoading.show();
             } else if (state is SignUpFailureState) {

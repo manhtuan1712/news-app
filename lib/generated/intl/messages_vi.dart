@@ -47,6 +47,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginSignUp": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
             "Đăng nhập vào tài khoản của bạn"),
+        "mainFavoriteBottom": MessageLookupByLibrary.simpleMessage("Yêu Thích"),
+        "mainHomeBottom": MessageLookupByLibrary.simpleMessage("Trang chủ"),
+        "mainProfileBottom": MessageLookupByLibrary.simpleMessage("Hồ sơ"),
         "signUp": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "signUpConfirmPassword":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),

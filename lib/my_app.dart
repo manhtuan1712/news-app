@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,7 @@ import 'package:news_app/core/navigation/navigation_center.dart';
 import 'package:news_app/core/theme/theme_style.dart';
 import 'package:news_app/features/authentication/presentation/cubit/login_cubit.dart';
 import 'package:news_app/features/authentication/presentation/cubit/sign_up_cubit.dart';
+import 'package:news_app/features/main/presentation/page/main_screen.dart';
 import 'package:news_app/generated/l10n.dart';
 
 import 'features/authentication/presentation/page/login_screen.dart';
@@ -64,7 +66,9 @@ class MyAppState extends State<MyApp> {
         ],
         supportedLocales: S.delegate.supportedLocales,
         onGenerateRoute: NavigationCenter.generateRoute,
-        home: const LoginScreen(),
+        home: FirebaseAuth.instance.currentUser != null
+            ? const MainScreen()
+            : const LoginScreen(),
       ),
     );
   }

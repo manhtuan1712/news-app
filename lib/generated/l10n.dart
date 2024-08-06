@@ -229,6 +229,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Home`
+  String get mainHomeBottom {
+    return Intl.message(
+      'Home',
+      name: 'mainHomeBottom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorite`
+  String get mainFavoriteBottom {
+    return Intl.message(
+      'Favorite',
+      name: 'mainFavoriteBottom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get mainProfileBottom {
+    return Intl.message(
+      'Profile',
+      name: 'mainProfileBottom',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
