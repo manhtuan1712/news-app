@@ -22,6 +22,23 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "firebaseAuthErrorDisable":
+            MessageLookupByLibrary.simpleMessage("Tài khoản đã bị vô hiệu hoá"),
+        "firebaseAuthErrorEmailAlreadyInUse":
+            MessageLookupByLibrary.simpleMessage("Email đã được sử dụng"),
+        "firebaseAuthErrorGeneral": MessageLookupByLibrary.simpleMessage(
+            "Lỗi hệ thống, vui lòng thử lại sau"),
+        "firebaseAuthErrorInvalidEmail":
+            MessageLookupByLibrary.simpleMessage("Email không tồn tại"),
+        "firebaseAuthErrorNotFound":
+            MessageLookupByLibrary.simpleMessage("Tài khoản không tồn tại"),
+        "firebaseAuthErrorPasswordAndConfirmPasswordNotMatch":
+            MessageLookupByLibrary.simpleMessage(
+                "Xác nhận mật khẩu không chính xác"),
+        "firebaseAuthErrorWeakPassword":
+            MessageLookupByLibrary.simpleMessage("Mật khẩu yếu"),
+        "firebaseAuthErrorWrongPassword":
+            MessageLookupByLibrary.simpleMessage("Mật khẩu sai"),
         "loginDoNotHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Không có tài khoản?"),
         "loginEmail": MessageLookupByLibrary.simpleMessage("Email"),
@@ -34,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUpConfirmPassword":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
         "signUpCreateYourAccount":
-            MessageLookupByLibrary.simpleMessage("Tạo tài khoản của bạn")
+            MessageLookupByLibrary.simpleMessage("Tạo tài khoản của bạn"),
+        "signUpEmailWrongFormat":
+            MessageLookupByLibrary.simpleMessage("Email không đúng định đạng")
       };
 }

@@ -22,6 +22,23 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "firebaseAuthErrorDisable":
+            MessageLookupByLibrary.simpleMessage("Account disabled"),
+        "firebaseAuthErrorEmailAlreadyInUse":
+            MessageLookupByLibrary.simpleMessage("Email already in use"),
+        "firebaseAuthErrorGeneral": MessageLookupByLibrary.simpleMessage(
+            "System error, please try again later"),
+        "firebaseAuthErrorInvalidEmail":
+            MessageLookupByLibrary.simpleMessage("Email does not exist"),
+        "firebaseAuthErrorNotFound":
+            MessageLookupByLibrary.simpleMessage("Account does not exist"),
+        "firebaseAuthErrorPasswordAndConfirmPasswordNotMatch":
+            MessageLookupByLibrary.simpleMessage(
+                "Incorrect password confirmation"),
+        "firebaseAuthErrorWeakPassword":
+            MessageLookupByLibrary.simpleMessage("Weak Password"),
+        "firebaseAuthErrorWrongPassword":
+            MessageLookupByLibrary.simpleMessage("Incorrect password"),
         "loginDoNotHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "loginEmail": MessageLookupByLibrary.simpleMessage("Email"),
@@ -34,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUpConfirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "signUpCreateYourAccount":
-            MessageLookupByLibrary.simpleMessage("Create your Account")
+            MessageLookupByLibrary.simpleMessage("Create your Account"),
+        "signUpEmailWrongFormat": MessageLookupByLibrary.simpleMessage(
+            "Email is not in the correct format")
       };
 }

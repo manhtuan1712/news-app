@@ -25,3 +25,11 @@ class NoConnectionFailure extends Failure {
 }
 
 class PermissionFailure extends Failure {}
+
+class FirebaseAuthFailure extends Failure {
+  final String code;
+
+  FirebaseAuthFailure({
+    required this.code,
+  });
+}

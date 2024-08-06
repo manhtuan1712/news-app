@@ -7,5 +7,14 @@
   "loginSignIn": "Đăng nhập",
   "signUp": "Đăng ký",
   "signUpCreateYourAccount": "Tạo tài khoản của bạn",
-  "signUpConfirmPassword": "Xác nhận mật khẩu"
+  "signUpConfirmPassword": "Xác nhận mật khẩu",
+  "signUpEmailWrongFormat": "Email không đúng định đạng",
+  "firebaseAuthErrorWeakPassword": "Mật khẩu yếu",
+  "firebaseAuthErrorEmailAlreadyInUse": "Email đã được sử dụng",
+  "firebaseAuthErrorPasswordAndConfirmPasswordNotMatch": "Xác nhận mật khẩu không chính xác",
+  "firebaseAuthErrorInvalidEmail": "Email không tồn tại",
+  "firebaseAuthErrorDisable": "Tài khoản đã bị vô hiệu hoá",
+  "firebaseAuthErrorNotFound": "Tài khoản không tồn tại",
+  "firebaseAuthErrorWrongPassword": "Mật khẩu sai",
+  "firebaseAuthErrorGeneral": "Lỗi hệ thống, vui lòng thử lại sau"
 }
