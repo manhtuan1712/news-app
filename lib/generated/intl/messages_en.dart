@@ -21,5 +21,38 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "firebaseAuthErrorDisable":
+            MessageLookupByLibrary.simpleMessage("Account disabled"),
+        "firebaseAuthErrorEmailAlreadyInUse":
+            MessageLookupByLibrary.simpleMessage("Email already in use"),
+        "firebaseAuthErrorGeneral": MessageLookupByLibrary.simpleMessage(
+            "System error, please try again later"),
+        "firebaseAuthErrorInvalidEmail":
+            MessageLookupByLibrary.simpleMessage("Email does not exist"),
+        "firebaseAuthErrorNotFound":
+            MessageLookupByLibrary.simpleMessage("Account does not exist"),
+        "firebaseAuthErrorPasswordAndConfirmPasswordNotMatch":
+            MessageLookupByLibrary.simpleMessage(
+                "Incorrect password confirmation"),
+        "firebaseAuthErrorWeakPassword":
+            MessageLookupByLibrary.simpleMessage("Weak Password"),
+        "firebaseAuthErrorWrongPassword":
+            MessageLookupByLibrary.simpleMessage("Incorrect password"),
+        "loginDoNotHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "loginEmail": MessageLookupByLibrary.simpleMessage("Email"),
+        "loginPassword": MessageLookupByLibrary.simpleMessage("Password"),
+        "loginSignIn": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "loginSignUp": MessageLookupByLibrary.simpleMessage("Sign up"),
+        "loginToYourAccount":
+            MessageLookupByLibrary.simpleMessage("Login to your account"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
+        "signUpConfirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "signUpCreateYourAccount":
+            MessageLookupByLibrary.simpleMessage("Create your Account"),
+        "signUpEmailWrongFormat": MessageLookupByLibrary.simpleMessage(
+            "Email is not in the correct format")
+      };
 }

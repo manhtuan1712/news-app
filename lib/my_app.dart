@@ -5,10 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:news_app/core/di/injection_container.dart';
 import 'package:news_app/core/helpers/global_configs.dart';
 import 'package:news_app/core/navigation/navigation_center.dart';
 import 'package:news_app/core/theme/theme_style.dart';
+import 'package:news_app/features/authentication/presentation/cubit/login_cubit.dart';
+import 'package:news_app/features/authentication/presentation/cubit/sign_up_cubit.dart';
 import 'package:news_app/generated/l10n.dart';
+
+import 'features/authentication/presentation/page/login_screen.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({
@@ -31,7 +36,14 @@ class MyAppState extends State<MyApp> {
       DeviceOrientation.portraitDown,
     ]);
     return MultiBlocProvider(
-      providers: const [],
+      providers: [
+        BlocProvider(
+          create: (_) => sl<LoginCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<SignUpCubit>(),
+        ),
+      ],
       child: MaterialApp(
         navigatorKey: NavigationCenter.navigatorKey,
         title: '',
@@ -52,7 +64,7 @@ class MyAppState extends State<MyApp> {
         ],
         supportedLocales: S.delegate.supportedLocales,
         onGenerateRoute: NavigationCenter.generateRoute,
-        home: const SizedBox(),
+        home: const LoginScreen(),
       ),
     );
   }

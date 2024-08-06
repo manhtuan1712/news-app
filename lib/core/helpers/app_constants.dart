@@ -1,59 +1,78 @@
 import 'package:flutter/material.dart';
 
 class AppConstants {
-  // font
+  // Font.
   static String defaultFont = 'SFProDisplay';
 
-  // space size
-  static double paddingDefault = 16;
-
-  static TextStyle text17Regular = const TextStyle(
-    fontSize: 17.0,
-    fontWeight: FontWeight.w400,
+  // Text Style.
+  static TextStyle textHeadingH1 = const TextStyle(
+    fontSize: 48.0,
+    fontWeight: FontWeight.bold,
   );
 
-  static TextStyle text18Bold = const TextStyle(
+  static TextStyle textHeadingH2 = const TextStyle(
+    fontSize: 40.0,
+    fontWeight: FontWeight.bold,
+  );
+
+  static TextStyle textHeadingH3 = const TextStyle(
+    fontSize: 32.0,
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle textHeadingH4 = const TextStyle(
+    fontSize: 24.0,
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle textHeadingH5 = const TextStyle(
     fontSize: 18.0,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w600,
   );
 
-  static TextStyle text16Regular = const TextStyle(
+  static TextStyle textBody1SemiBold = const TextStyle(
+    fontSize: 16.0,
+    fontWeight: FontWeight.bold,
+  );
+
+  static TextStyle textBody1Regular = const TextStyle(
     fontSize: 16.0,
     fontWeight: FontWeight.w400,
   );
 
-  static TextStyle text16Medium = const TextStyle(
+  static TextStyle textBody2SemiBold = const TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle textBody2Regular = const TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w400,
+  );
+
+  static TextStyle textButtonLarge = const TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle textButtonMedium = const TextStyle(
     fontSize: 16.0,
-    fontWeight: FontWeight.w500,
-  );
-
-  static TextStyle text15Regular = const TextStyle(
-    fontSize: 15.0,
-    fontWeight: FontWeight.w400,
-  );
-
-  static TextStyle text14Regular = const TextStyle(
-    fontSize: 14.0,
-    fontWeight: FontWeight.w400,
-  );
-
-  static TextStyle text14Medium = const TextStyle(
-    fontSize: 14.0,
-    fontWeight: FontWeight.w500,
-  );
-
-  static TextStyle text14SemiBold = const TextStyle(
-    fontSize: 14.0,
     fontWeight: FontWeight.w600,
   );
 
-  static TextStyle text12Regular = const TextStyle(
+  static TextStyle textFootNoteSemiBold = const TextStyle(
+    fontSize: 12.0,
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle textFootNoteRegular = const TextStyle(
     fontSize: 12.0,
     fontWeight: FontWeight.w400,
   );
 
-  static TextStyle text12Bold = const TextStyle(
-    fontSize: 12.0,
-    fontWeight: FontWeight.w600,
-  );
+  // Image
+  static String icLogo(BuildContext context) =>
+      MediaQuery.platformBrightnessOf(context) == Brightness.dark
+          ? 'assets/icon/ic_dark_splash.png'
+          : 'assets/icon/ic_splash.png';
 }

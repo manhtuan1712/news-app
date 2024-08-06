@@ -12,7 +12,10 @@ Future<void> main() async {
       await AppUtils.init();
       FlutterError.onError =
           FirebaseCrashlytics.instance.recordFlutterFatalError;
-      PlatformDispatcher.instance.onError = (error, stack) {
+      PlatformDispatcher.instance.onError = (
+        error,
+        stack,
+      ) {
         FirebaseCrashlytics.instance.recordError(
           error,
           stack,

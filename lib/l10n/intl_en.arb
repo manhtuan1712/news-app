@@ -1,2 +1,20 @@
 {
+  "loginDoNotHaveAnAccount": "Don't have an account?",
+  "loginSignUp": "Sign up",
+  "loginToYourAccount": "Login to your account",
+  "loginEmail": "Email",
+  "loginPassword": "Password",
+  "loginSignIn": "Sign in",
+  "signUp": "Sign up",
+  "signUpCreateYourAccount": "Create your Account",
+  "signUpConfirmPassword": "Confirm Password",
+  "signUpEmailWrongFormat": "Email is not in the correct format",
+  "firebaseAuthErrorWeakPassword": "Weak Password",
+  "firebaseAuthErrorEmailAlreadyInUse": "Email already in use",
+  "firebaseAuthErrorPasswordAndConfirmPasswordNotMatch": "Incorrect password confirmation",
+  "firebaseAuthErrorInvalidEmail": "Email does not exist",
+  "firebaseAuthErrorDisable": "Account disabled",
+  "firebaseAuthErrorNotFound": "Account does not exist",
+  "firebaseAuthErrorWrongPassword": "Incorrect password",
+  "firebaseAuthErrorGeneral": "System error, please try again later"
 }

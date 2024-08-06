@@ -89,7 +89,10 @@ class DioLoggingInterceptor extends InterceptorsWrapper {
     String errorMessage = getErrorMessage(dioError);
     if (dioError.type == DioExceptionType.badResponse &&
         dioError.response!.statusCode != 200) {
-      AppUtils.showToastMessage(errorMessage);
+      AppUtils.showToastMessage(
+        errorMessage,
+        AppUtils.contextMain,
+      );
     }
   }
 

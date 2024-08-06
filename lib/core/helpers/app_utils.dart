@@ -22,20 +22,23 @@ class AppUtils {
   }
 
   static showToastMessage(
-    String message, {
-    BuildContext? context,
-  }) {
+    String message,
+    BuildContext context,
+  ) {
     if (message.isNotEmpty) {
-      Future.delayed(const Duration(milliseconds: 500), () {
-        Fluttertoast.showToast(
-          msg: message,
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.TOP,
-          timeInSecForIosWeb: 2,
-          backgroundColor: Colors.black.withOpacity(0.6),
-          textColor: Colors.white,
-        );
-      });
+      Future.delayed(
+        const Duration(milliseconds: 200),
+        () {
+          Fluttertoast.showToast(
+            msg: message,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.TOP,
+            timeInSecForIosWeb: 2,
+            backgroundColor: Theme.of(context).colorScheme.scrim,
+            textColor: Theme.of(context).colorScheme.surfaceDim,
+          );
+        },
+      );
     }
   }
 }
