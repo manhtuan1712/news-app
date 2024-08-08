@@ -19,5 +19,12 @@
   "firebaseAuthErrorGeneral": "Lỗi hệ thống, vui lòng thử lại sau",
   "mainHomeBottom": "Trang chủ",
   "mainFavoriteBottom": "Yêu Thích",
-  "mainProfileBottom": "Hồ sơ"
+  "mainProfileBottom": "Hồ sơ",
+  "mainGoodMorning": "Chào buổi sáng",
+  "mainGoodAfternoon": "Chào buổi trưa",
+  "mainGoodEvening": "Chào buổi chiều",
+  "mainGoodNight": "Chào buổi tối",
+  "mainSearch": "Tìm kiếm bài viết...",
+  "mainCanNotFindAnything": "Không tìm thấy bài viết nào",
+  "articleDetailCheckOut": "Xem tin tức"
 }

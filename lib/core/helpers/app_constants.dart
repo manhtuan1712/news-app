@@ -75,4 +75,5 @@ class AppConstants {
       MediaQuery.platformBrightnessOf(context) == Brightness.dark
           ? 'assets/icon/ic_dark_splash.png'
           : 'assets/icon/ic_splash.png';
+  static String icRetry = 'assets/icon/ic_retry.svg';
 }

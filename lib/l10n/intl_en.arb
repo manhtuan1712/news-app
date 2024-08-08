@@ -19,5 +19,12 @@
   "firebaseAuthErrorGeneral": "System error, please try again later",
   "mainHomeBottom": "Home",
   "mainFavoriteBottom": "Favorite",
-  "mainProfileBottom": "Profile"
+  "mainProfileBottom": "Profile",
+  "mainGoodMorning": "Good Morning",
+  "mainGoodAfternoon": "Good Afternoon",
+  "mainGoodEvening": "Good Evening",
+  "mainGoodNight": "Good Night",
+  "mainSearch": "Search articles...",
+  "mainCanNotFindAnything": "Can not find any article",
+  "articleDetailCheckOut": "Views new"
 }
