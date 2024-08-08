@@ -13,7 +13,7 @@ Mobile Developer Coding Challenge: NewsApp
   - Show list bookmarks
 - Support offline access
 - Support localization
-- Support dark mode
+- Support light/dark mode (based on phone system)
 - Support unit test
 
 ## Prerequisites
@@ -49,8 +49,8 @@ dart pub run build_runner build --delete-conflicting-outputs
 flutter test
 ```
 ## Set up .env
-1. Create .env file on project root folder
-2. Add 
+1. Create .env file in project root folder
+2. Add this line into .env file
 ```sh
 newsApiKey=[YOUR_NEWS_API_KEY]
 ```
