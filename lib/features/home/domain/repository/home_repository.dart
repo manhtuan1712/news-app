@@ -15,4 +15,6 @@ abstract class HomeRepository {
   Future<Either<HiveFailure, String>> saveTopHeadlinesLocal(
     List<ArticleModel> articles,
   );
+
+  Future<Either<HiveFailure, List<ArticleModel>>> getTopHeadlinesLocal();
 }

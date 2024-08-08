@@ -28,7 +28,7 @@ class HomeScreenState extends State<HomeScreen> {
 
   Timer? _debounce;
 
-  String _sourceId = 'abc-news';
+  String _sourceId = '';
 
   @override
   void dispose() {
@@ -42,11 +42,6 @@ class HomeScreenState extends State<HomeScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
-        context.read<HomeArticleCubit>().getTopHeadlinesAction(
-              '',
-              1,
-              _sourceId,
-            );
         context.read<HomeSourceCubit>().getSourcesAction();
       },
     );
@@ -72,6 +67,12 @@ class HomeScreenState extends State<HomeScreen> {
         BlocSelector<HomeSourceCubit, HomeSourceState, List<SourceModel>?>(
           selector: (state) {
             if (state is HomeSourceGetSuccessState) {
+              _sourceId = state.sources?[0].id ?? '';
+              context.read<HomeArticleCubit>().getTopHeadlinesAction(
+                    '',
+                    1,
+                    _sourceId,
+                  );
               return state.sources;
             }
             return null;
@@ -153,13 +154,8 @@ class HomeScreenState extends State<HomeScreen> {
                   ? const HomeBodyEmptyWidget()
                   : HomeBodyWidget(
                       articles: articles ?? [],
-                      onRefresh: () => context
-                          .read<HomeArticleCubit>()
-                          .getTopHeadlinesAction(
-                            '',
-                            1,
-                            _sourceId,
-                          ),
+                      onRefresh: () =>
+                          context.read<HomeSourceCubit>().getSourcesAction(),
                     ),
             );
           },

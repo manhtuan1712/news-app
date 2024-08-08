@@ -166,7 +166,7 @@ void main() {
   );
 
   test(
-    'Get top headlines api and return source list',
+    'Get top headlines api and return articles list',
     () async {
       when(
         mockBaseService.getTopHeadlines(

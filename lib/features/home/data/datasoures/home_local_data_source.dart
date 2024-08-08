@@ -8,6 +8,8 @@ abstract class HomeLocalDataSource {
   Future<String> saveTopHeadlinesLocal(
     List<ArticleModel> articles,
   );
+
+  Future<List<ArticleModel>> getTopHeadlinesLocal();
 }
 
 class HomeLocalDataSourceImpl implements HomeLocalDataSource {
@@ -27,6 +29,19 @@ class HomeLocalDataSourceImpl implements HomeLocalDataSource {
       }
     } on HiveError {
       return HiveSuccessCode.failed.get();
+    }
+  }
+
+  @override
+  Future<List<ArticleModel>> getTopHeadlinesLocal() async {
+    try {
+      List<dynamic> result = await AppUtils.uploadBox.get(
+        GlobalConfig.hiveArticles,
+      );
+      List<ArticleModel> articles = result.cast<ArticleModel>();
+      return articles;
+    } on HiveError {
+      return [];
     }
   }
 }
