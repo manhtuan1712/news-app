@@ -1,30 +1,62 @@
 # NewsApp
 Mobile Developer Coding Challenge: NewsApp
-Objective: Assess the candidates' ability to develop a mobile application that integrates with the NewsAPI, focusing on API integration, UI design, and data handling.
 
-Task Description
-Scenario: Build a simple news app that allows users to browse the latest news articles. The app should fetch data from the NewsAPI and display it in a user-friendly manner.
-Use: Flutter
+**Features**:
+- Login/Sign up
+- Display top headlines news
+  - Support refresh
+  - Search by keyword
+- Display source category
+  - Search by source
+- Bookmark
+  - Save/Remove bookmark
+  - Show list bookmarks
+- Support offline access
+- Support localization
+- Support dark mode
+- Support unit test
 
-Requirements
-1. User Interface (UI):
-* Design a main screen that displays a list of news articles.
-* Each list item should show the article's title, source, and publication date.
-* Implement a detailed view for each article that includes the title, source, publication date, author, and full content.
-2. API Integration:
-* Fetch the latest news articles from the NewsAPI.
-* Use the top-headlines endpoint to get top news articles.
-* Provide functionality to search for news articles by keyword.
-3. State Management:
-* Implement state management to efficiently handle the app's data. You may use any state management solution such as Provider, Riverpod, BLoC, or any other Flutter state management approach.
-4. Data Handling:
-* Handle loading states while fetching data.
-* Implement error handling for API requests.
-* Provide offline access.
-5. Responsive Design:
-* Ensure the app is responsive and works on different device sizes.
-* Use modern UI components to create a pleasant user experience.
-6. Optional Features:
-* Implement user authentication (e.g., login/signup) using Firebase Authentication.
-* Allow users to save favourite articles and view them later.
-* Add pull-to-refresh functionality to update the news list.
+## Prerequisites
+- Xcode 15.4+
+- Android Studio Koala | 2024.1.1
+- Flutter 3.24+ (install with `brew install --cask flutter` or from https://docs.flutter.dev/get-started/install/macos)
+- Install Flutter and Dart extension on your IDE
+
+## Installation
+- `git clone git@github.com/news-app.git`
+- `cd news-app`
+- `flutter pub get`
+
+## Development
+Configure your IDE to use Dart SDK from Flutter installation. If Flutter was installed through `brew`,
+path to Dart SDK will be something as `/usr/local/Caskroom/flutter/3.7.9/flutter/bin/cache/dart-sdk`
+(you can find your installed Flutter directory by `ls /usr/local/Caskroom/flutter/`).
+
+Most of the commands should be done from within `app` directory.
+
+####  Install packages and generate localization
+```sh
+  flutter pub get
+```
+
+####  Generate model, retrofit api and mockito test
+```sh
+dart pub run build_runner build --delete-conflicting-outputs
+```
+
+####  Run unit test
+```sh
+flutter test
+```
+## Set up .env
+1. Create .env file on project root folder
+2. Add 
+```sh
+newsApiKey=[YOUR_NEWS_API_KEY]
+```
+
+
+
+
+
+
