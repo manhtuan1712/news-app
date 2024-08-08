@@ -5,6 +5,7 @@ import 'package:news_app/core/usecase/usecase.dart';
 import 'package:news_app/features/home/data/models/request/request_top_headlines_model.dart';
 import 'package:news_app/features/home/data/models/response/article_model.dart';
 import 'package:news_app/features/home/domain/usecase/get_top_headlines.dart';
+import 'package:news_app/features/home/domain/usecase/get_top_headlines_local.dart';
 import 'package:news_app/features/home/domain/usecase/save_top_headlines_local.dart';
 
 part 'home_article_state.dart';
@@ -14,9 +15,12 @@ class HomeArticleCubit extends Cubit<HomeArticleState> {
 
   SaveTopHeadlinesLocal saveTopHeadlinesLocal;
 
+  GetTopHeadlinesLocal getTopHeadlinesLocal;
+
   HomeArticleCubit({
     required this.getTopHeadlines,
     required this.saveTopHeadlinesLocal,
+    required this.getTopHeadlinesLocal,
   }) : super(HomeArticleInitialState());
 
   Future<void> getTopHeadlinesAction(
@@ -40,11 +44,14 @@ class HomeArticleCubit extends Cubit<HomeArticleState> {
       ),
     );
     result.fold(
-      (l) => emit(
-        HomeGetTopHeadLinesFailureState(
-          error: l.mess,
-        ),
-      ),
+      (l) {
+        _getTopHeadlinesLocal();
+        emit(
+          HomeGetTopHeadLinesFailureState(
+            error: l.mess,
+          ),
+        );
+      },
       (r) {
         saveTopHeadlinesLocal.call(
           RequestTopHeadlinesLocalParams(
@@ -60,6 +67,28 @@ class HomeArticleCubit extends Cubit<HomeArticleState> {
             articles: r.articles,
             totalResults: r.totalResults,
             currentPage: currentPage,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _getTopHeadlinesLocal() async {
+    final result = await getTopHeadlinesLocal.call(
+      NoParams(),
+    );
+    result.fold(
+      (l) => emit(
+        HomeGetTopHeadLinesFailureState(
+          error: l.mess,
+        ),
+      ),
+      (r) {
+        emit(
+          HomeGetTopHeadLinesSuccessState(
+            articles: r,
+            totalResults: 10,
+            currentPage: 1,
           ),
         );
       },

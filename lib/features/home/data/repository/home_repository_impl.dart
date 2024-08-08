@@ -75,4 +75,20 @@ class HomeRepositoryImpl implements HomeRepository {
       );
     }
   }
+
+  @override
+  Future<Either<HiveFailure, List<ArticleModel>>> getTopHeadlinesLocal() async {
+    try {
+      var response = await homeLocalDataSource.getTopHeadlinesLocal();
+      return Right(
+        response,
+      );
+    } on HiveError catch (error) {
+      return Left(
+        HiveFailure(
+          mess: error.message,
+        ),
+      );
+    }
+  }
 }

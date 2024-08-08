@@ -22,7 +22,7 @@ class HomeSourceSelectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60.0,
+      height: sources.isEmpty ? 12.0 : 60.0,
       padding: const EdgeInsets.symmetric(
         vertical: 12.0,
         horizontal: 32.0,

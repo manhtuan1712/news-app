@@ -140,4 +140,17 @@ class MockHomeLocalDataSource extends _i1.Mock
           ),
         )),
       ) as _i5.Future<String>);
+
+  @override
+  _i5.Future<List<_i8.ArticleModel>> getTopHeadlinesLocal() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getTopHeadlinesLocal,
+          [],
+        ),
+        returnValue:
+            _i5.Future<List<_i8.ArticleModel>>.value(<_i8.ArticleModel>[]),
+        returnValueForMissingStub:
+            _i5.Future<List<_i8.ArticleModel>>.value(<_i8.ArticleModel>[]),
+      ) as _i5.Future<List<_i8.ArticleModel>>);
 }

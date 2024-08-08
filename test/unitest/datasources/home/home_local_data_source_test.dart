@@ -1,29 +1,26 @@
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hive/hive.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:news_app/core/api/error/failures.dart';
-import 'package:news_app/core/usecase/usecase.dart';
+import 'package:news_app/features/home/data/datasoures/home_local_data_source.dart';
+import 'package:news_app/features/home/data/datasoures/home_remote_data_source.dart';
 import 'package:news_app/features/home/data/models/request/request_top_headlines_model.dart';
 import 'package:news_app/features/home/data/models/response/article_model.dart';
+import 'package:news_app/features/home/data/models/response/response_sources_model.dart';
 import 'package:news_app/features/home/data/models/response/response_top_headlines_model.dart';
-import 'package:news_app/features/home/domain/repository/home_repository.dart';
-import 'package:news_app/features/home/domain/usecase/get_top_headlines.dart';
 
-import 'get_top_headlines_usecase_test.mocks.dart';
+import 'home_local_data_source_test.mocks.dart';
 
 @GenerateNiceMocks(
   [
-    MockSpec<HomeRepository>(
-      as: #MockHomeRepository,
+    MockSpec<HomeLocalDataSource>(
+      as: #MockHomeLocalDataSource,
     ),
   ],
 )
 void main() {
-  late MockHomeRepository mockHomeRepository;
-
-  late GetTopHeadlines getTopHeadlines;
+  late MockHomeLocalDataSource mockHomeLocalDataSource;
 
   final List<ArticleModel> articles = <ArticleModel>[
     ArticleModel(
@@ -74,36 +71,23 @@ void main() {
 
   setUp(
     () {
-      mockHomeRepository = MockHomeRepository();
-      getTopHeadlines = GetTopHeadlines(
-        homeRepository: mockHomeRepository,
-      );
+      mockHomeLocalDataSource = MockHomeLocalDataSource();
     },
   );
 
   // ---------- Get top headlines ---------- //
   test(
-    'Get top headlines api and throw DioException',
+    'Get top headlines local and throw HiveError',
     () async {
       when(
-        mockHomeRepository.getTopHeadlines(
-          any,
-        ),
+        mockHomeLocalDataSource.getTopHeadlinesLocal(),
       ).thenThrow(
-        DioException(
-          requestOptions: RequestOptions(),
+        HiveError(
+          '',
         ),
       );
       try {
-        await getTopHeadlines.call(
-          RequestTopHeadlinesParams(
-            requests: RequestTopHeadlinesModel(
-              sources: 'bbc-sport',
-              page: 1,
-              pageSize: 20,
-            ),
-          ),
-        );
+        await mockHomeLocalDataSource.getTopHeadlinesLocal();
         assert(false);
       } catch (exception) {
         assert(true);
@@ -112,32 +96,18 @@ void main() {
   );
 
   test(
-    'Get top headlines api and return articles list',
+    'Get top headlines local and return article list',
     () async {
       when(
-        mockHomeRepository.getTopHeadlines(
-          any,
-        ),
+        mockHomeLocalDataSource.getTopHeadlinesLocal(),
       ).thenAnswer(
-        (_) async => right(
-          ResponseTopHeadlinesModel(
-            articles: articles,
-          ),
-        ),
+        (_) async => articles,
       );
-      final Either<ServerFailure, ResponseTopHeadlinesModel> response =
-          await getTopHeadlines.call(
-        RequestTopHeadlinesParams(
-          requests: RequestTopHeadlinesModel(
-            sources: 'bbc-sport',
-            page: 1,
-            pageSize: 20,
-          ),
-        ),
-      );
+      final List<ArticleModel> response =
+          await mockHomeLocalDataSource.getTopHeadlinesLocal();
       expect(
         articles,
-        response.toOption().toNullable()?.articles,
+        response,
       );
     },
   );

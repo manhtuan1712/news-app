@@ -133,4 +133,31 @@ class MockHomeRepository extends _i1.Mock implements _i3.HomeRepository {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.HiveFailure, String>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.HiveFailure, List<_i9.ArticleModel>>>
+      getTopHeadlinesLocal() => (super.noSuchMethod(
+            Invocation.method(
+              #getTopHeadlinesLocal,
+              [],
+            ),
+            returnValue: _i4.Future<
+                    _i2.Either<_i5.HiveFailure, List<_i9.ArticleModel>>>.value(
+                _FakeEither_0<_i5.HiveFailure, List<_i9.ArticleModel>>(
+              this,
+              Invocation.method(
+                #getTopHeadlinesLocal,
+                [],
+              ),
+            )),
+            returnValueForMissingStub: _i4.Future<
+                    _i2.Either<_i5.HiveFailure, List<_i9.ArticleModel>>>.value(
+                _FakeEither_0<_i5.HiveFailure, List<_i9.ArticleModel>>(
+              this,
+              Invocation.method(
+                #getTopHeadlinesLocal,
+                [],
+              ),
+            )),
+          ) as _i4.Future<_i2.Either<_i5.HiveFailure, List<_i9.ArticleModel>>>);
 }
