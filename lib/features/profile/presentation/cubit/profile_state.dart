@@ -14,3 +14,5 @@ class ProfileGetCurrentUserState extends ProfileState {
     this.user,
   });
 }
+
+class ProfileLogOutSuccessState extends ProfileState {}

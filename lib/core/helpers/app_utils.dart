@@ -38,6 +38,7 @@ class AppUtils {
     BuildContext context,
   ) {
     if (message.isNotEmpty) {
+      ThemeData themeData = Theme.of(context);
       Future.delayed(
         const Duration(milliseconds: 200),
         () {
@@ -46,8 +47,8 @@ class AppUtils {
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.TOP,
             timeInSecForIosWeb: 2,
-            backgroundColor: Theme.of(context).colorScheme.secondaryFixedDim,
-            textColor: Theme.of(context).colorScheme.surfaceDim,
+            backgroundColor: themeData.colorScheme.secondaryFixedDim,
+            textColor: themeData.colorScheme.surfaceDim,
           );
         },
       );

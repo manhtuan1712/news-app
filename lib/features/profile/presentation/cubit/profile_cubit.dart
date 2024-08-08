@@ -16,4 +16,11 @@ class ProfileCubit extends Cubit<ProfileState> {
       ),
     );
   }
+
+  Future<void> logOut() async {
+    await FirebaseAuth.instance.signOut();
+    emit(
+      ProfileLogOutSuccessState(),
+    );
+  }
 }

@@ -120,6 +120,16 @@ class S {
     );
   }
 
+  /// `Log Out`
+  String get logOut {
+    return Intl.message(
+      'Log Out',
+      name: 'logOut',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Create your Account`
   String get signUpCreateYourAccount {
     return Intl.message(

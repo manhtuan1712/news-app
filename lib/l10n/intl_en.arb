@@ -6,6 +6,7 @@
   "loginPassword": "Password",
   "loginSignIn": "Sign in",
   "signUp": "Sign up",
+  "logOut": "Log Out",
   "signUpCreateYourAccount": "Create your Account",
   "signUpConfirmPassword": "Confirm Password",
   "signUpEmailWrongFormat": "Email is not in the correct format",
