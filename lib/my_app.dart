@@ -12,6 +12,9 @@ import 'package:news_app/core/navigation/navigation_center.dart';
 import 'package:news_app/core/theme/theme_style.dart';
 import 'package:news_app/features/authentication/presentation/cubit/login_cubit.dart';
 import 'package:news_app/features/authentication/presentation/cubit/sign_up_cubit.dart';
+import 'package:news_app/features/bookmark/presentation/cubit/bookmark_cubit.dart';
+import 'package:news_app/features/home/presentation/cubit/home_article_cubit.dart';
+import 'package:news_app/features/home/presentation/cubit/home_source_cubit.dart';
 import 'package:news_app/features/main/presentation/page/main_screen.dart';
 import 'package:news_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:news_app/generated/l10n.dart';
@@ -48,6 +51,15 @@ class MyAppState extends State<MyApp> {
         ),
         BlocProvider(
           create: (_) => sl<ProfileCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<BookmarkCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<HomeArticleCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<HomeSourceCubit>(),
         ),
       ],
       child: MaterialApp(

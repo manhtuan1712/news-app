@@ -1,28 +1,23 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:news_app/features/home/data/datasoures/home_local_data_source.dart';
-import 'package:news_app/features/home/data/datasoures/home_remote_data_source.dart';
-import 'package:news_app/features/home/data/models/request/request_top_headlines_model.dart';
+import 'package:news_app/features/bookmark/data/datasource/bookmark_local_data_source.dart';
 import 'package:news_app/features/home/data/models/response/article_model.dart';
-import 'package:news_app/features/home/data/models/response/response_sources_model.dart';
-import 'package:news_app/features/home/data/models/response/response_top_headlines_model.dart';
 
-import 'home_local_data_source_test.mocks.dart';
+import 'bookmark_local_data_source_test.mocks.dart';
 
 @GenerateNiceMocks(
   [
-    MockSpec<HomeLocalDataSource>(
-      as: #MockHomeLocalDataSource,
+    MockSpec<BookmarkLocalDataSource>(
+      as: #MockBookmarkLocalDataSource,
     ),
   ],
 )
 void main() {
-  late MockHomeLocalDataSource mockHomeLocalDataSource;
+  late MockBookmarkLocalDataSource mockBookmarkLocalDataSource;
 
-  final List<ArticleModel> articles = <ArticleModel>[
+  List<ArticleModel> articles = <ArticleModel>[
     ArticleModel(
       author: 'The New York Times',
       title:
@@ -71,23 +66,23 @@ void main() {
 
   setUp(
     () {
-      mockHomeLocalDataSource = MockHomeLocalDataSource();
+      mockBookmarkLocalDataSource = MockBookmarkLocalDataSource();
     },
   );
 
-  // ---------- Get top headlines ---------- //
+  // ---------- Get bookmark local ---------- //
   test(
-    'Get top headlines local and throw HiveError',
+    'Get bookmark local and throw HiveError',
     () async {
       when(
-        mockHomeLocalDataSource.getTopHeadlinesLocal(),
+        mockBookmarkLocalDataSource.getBookmarksLocal(),
       ).thenThrow(
         HiveError(
           '',
         ),
       );
       try {
-        await mockHomeLocalDataSource.getTopHeadlinesLocal();
+        await mockBookmarkLocalDataSource.getBookmarksLocal();
         assert(false);
       } catch (exception) {
         assert(true);
@@ -96,19 +91,45 @@ void main() {
   );
 
   test(
-    'Get top headlines local and return article list',
+    'Get top bookmark local and return articles list',
     () async {
       when(
-        mockHomeLocalDataSource.getTopHeadlinesLocal(),
+        mockBookmarkLocalDataSource.getBookmarksLocal(),
       ).thenAnswer(
         (_) async => articles,
       );
       final List<ArticleModel> response =
-          await mockHomeLocalDataSource.getTopHeadlinesLocal();
+          await mockBookmarkLocalDataSource.getBookmarksLocal();
       expect(
         articles,
         response,
       );
+    },
+  );
+
+  // ---------- Save bookmark local ---------- //
+  test(
+    'Save bookmark local and throw HiveError',
+    () async {
+      when(
+        mockBookmarkLocalDataSource.saveBookmarkLocal(
+          any,
+          any,
+        ),
+      ).thenThrow(
+        HiveError(
+          '',
+        ),
+      );
+      try {
+        await mockBookmarkLocalDataSource.saveBookmarkLocal(
+          ArticleModel(),
+          true,
+        );
+        assert(false);
+      } catch (exception) {
+        assert(true);
+      }
     },
   );
 }

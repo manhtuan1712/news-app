@@ -25,4 +25,5 @@ class GlobalConfig {
   // Hive
   static String hiveLaskBox = 'laskBox';
   static String hiveArticles = 'articles';
+  static String hiveBookmarks = 'bookmarks';
 }

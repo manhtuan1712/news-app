@@ -92,91 +92,93 @@ class LoginScreenState extends State<LoginScreen> {
               32.0,
             ),
             width: MediaQuery.sizeOf(context).width,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    AppConstants.icLogo(
-                      context,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      AppConstants.icLogo(
+                        context,
+                      ),
+                      width: MediaQuery.sizeOf(context).width * .4,
+                      fit: BoxFit.fitWidth,
                     ),
-                    width: MediaQuery.sizeOf(context).width * .4,
-                    fit: BoxFit.fitWidth,
                   ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Text(
-                  S.of(context).loginToYourAccount,
-                  style: AppConstants.textHeadingH5.copyWith(
-                    color: Theme.of(context).colorScheme.surfaceTint,
+                  const SizedBox(
+                    height: 20.0,
                   ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                BaseTextFieldWidget(
-                  height: 56.0,
-                  hintText: S.of(context).loginEmail,
-                  background: Theme.of(context).colorScheme.scrim,
-                  padding: const EdgeInsets.only(
-                    left: 16.0,
+                  Text(
+                    S.of(context).loginToYourAccount,
+                    style: AppConstants.textHeadingH5.copyWith(
+                      color: Theme.of(context).colorScheme.surfaceTint,
+                    ),
                   ),
-                  colorText: Theme.of(context).colorScheme.surfaceDim,
-                  onChanged: (value) {
-                    setState(() {
-                      _email = value;
-                    });
-                  },
-                  alert: !_isEmailValid() && _email.isNotEmpty,
-                  alertMessage: S.of(context).signUpEmailWrongFormat,
-                ),
-                const SizedBox(
-                  height: 16.0,
-                ),
-                BaseTextFieldWidget(
-                  height: 56.0,
-                  hintText: S.of(context).loginPassword,
-                  background: Theme.of(context).colorScheme.scrim,
-                  padding: const EdgeInsets.only(
-                    left: 16.0,
+                  const SizedBox(
+                    height: 20.0,
                   ),
-                  colorText: Theme.of(context).colorScheme.surfaceDim,
-                  obscureText: _isObscurePassword,
-                  suffix: Icon(
-                    _isObscurePassword
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                    color: Theme.of(context).colorScheme.primary,
+                  BaseTextFieldWidget(
+                    height: 56.0,
+                    hintText: S.of(context).loginEmail,
+                    background: Theme.of(context).colorScheme.scrim,
+                    padding: const EdgeInsets.only(
+                      left: 16.0,
+                    ),
+                    colorText: Theme.of(context).colorScheme.surfaceDim,
+                    onChanged: (value) {
+                      setState(() {
+                        _email = value;
+                      });
+                    },
+                    alert: !_isEmailValid() && _email.isNotEmpty,
+                    alertMessage: S.of(context).signUpEmailWrongFormat,
                   ),
-                  onTapSuffix: () => setState(
-                    () {
-                      _isObscurePassword = !_isObscurePassword;
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                  BaseTextFieldWidget(
+                    height: 56.0,
+                    hintText: S.of(context).loginPassword,
+                    background: Theme.of(context).colorScheme.scrim,
+                    padding: const EdgeInsets.only(
+                      left: 16.0,
+                    ),
+                    colorText: Theme.of(context).colorScheme.surfaceDim,
+                    obscureText: _isObscurePassword,
+                    suffix: Icon(
+                      _isObscurePassword
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    onTapSuffix: () => setState(
+                      () {
+                        _isObscurePassword = !_isObscurePassword;
+                      },
+                    ),
+                    rightPosition: 16.0,
+                    onChanged: (value) {
+                      setState(() {
+                        _password = value;
+                      });
                     },
                   ),
-                  rightPosition: 16.0,
-                  onChanged: (value) {
-                    setState(() {
-                      _password = value;
-                    });
-                  },
-                ),
-                const SizedBox(
-                  height: 32.0,
-                ),
-                BaseButtonWidget(
-                  text: S.of(context).loginSignIn,
-                  buttonState: _isButtonActive
-                      ? ButtonState.normal
-                      : ButtonState.disabled,
-                  onClick: () => context.read<LoginCubit>().loginAction(
-                        _email,
-                        _password,
-                      ),
-                )
-              ],
+                  const SizedBox(
+                    height: 32.0,
+                  ),
+                  BaseButtonWidget(
+                    text: S.of(context).loginSignIn,
+                    buttonState: _isButtonActive
+                        ? ButtonState.normal
+                        : ButtonState.disabled,
+                    onClick: () => context.read<LoginCubit>().loginAction(
+                          _email,
+                          _password,
+                        ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

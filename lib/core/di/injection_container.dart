@@ -2,15 +2,21 @@ import 'package:get_it/get_it.dart';
 import 'package:news_app/core/api/service/base/base_rest_service.dart';
 import 'package:news_app/core/helpers/secure_storage.dart';
 import 'package:news_app/core/theme/theme_style.dart';
-import 'package:news_app/features/authentication/data/datasources/authetication_remote_data_source.dart';
+import 'package:news_app/features/authentication/data/datasource/authentication_remote_data_source.dart';
 import 'package:news_app/features/authentication/data/repository/authentication_repository_impl.dart';
 import 'package:news_app/features/authentication/domain/repository/authentication_repository.dart';
 import 'package:news_app/features/authentication/domain/usecase/login.dart';
 import 'package:news_app/features/authentication/domain/usecase/sign_up.dart';
 import 'package:news_app/features/authentication/presentation/cubit/login_cubit.dart';
 import 'package:news_app/features/authentication/presentation/cubit/sign_up_cubit.dart';
-import 'package:news_app/features/home/data/datasoures/home_local_data_source.dart';
-import 'package:news_app/features/home/data/datasoures/home_remote_data_source.dart';
+import 'package:news_app/features/bookmark/data/datasource/bookmark_local_data_source.dart';
+import 'package:news_app/features/bookmark/data/repository/bookmark_repository_impl.dart';
+import 'package:news_app/features/bookmark/domain/repository/bookmark_repository.dart';
+import 'package:news_app/features/bookmark/domain/usecase/get_bookmark_local.dart';
+import 'package:news_app/features/bookmark/domain/usecase/save_bookmark_local.dart';
+import 'package:news_app/features/bookmark/presentation/cubit/bookmark_cubit.dart';
+import 'package:news_app/features/home/data/datasource/home_local_data_source.dart';
+import 'package:news_app/features/home/data/datasource/home_remote_data_source.dart';
 import 'package:news_app/features/home/data/repository/home_repository_impl.dart';
 import 'package:news_app/features/home/domain/repository/home_repository.dart';
 import 'package:news_app/features/home/domain/usecase/get_sources.dart';
@@ -36,6 +42,9 @@ Future<void> init() async {
   sl.registerLazySingleton<HomeLocalDataSource>(
     () => HomeLocalDataSourceImpl(),
   );
+  sl.registerLazySingleton<BookmarkLocalDataSource>(
+    () => BookmarkLocalDataSourceImpl(),
+  );
 
   // Repository
   sl.registerLazySingleton<AuthenticationRepository>(
@@ -47,6 +56,11 @@ Future<void> init() async {
     () => HomeRepositoryImpl(
       homeRemoteDataSource: sl(),
       homeLocalDataSource: sl(),
+    ),
+  );
+  sl.registerLazySingleton<BookmarkRepository>(
+    () => BookmarkRepositoryImpl(
+      bookmarkLocalDataSource: sl(),
     ),
   );
 
@@ -81,6 +95,16 @@ Future<void> init() async {
       homeRepository: sl(),
     ),
   );
+  sl.registerLazySingleton<SaveBookmarkLocal>(
+    () => SaveBookmarkLocal(
+      bookmarkRepository: sl(),
+    ),
+  );
+  sl.registerLazySingleton<GetBookmarkLocal>(
+    () => GetBookmarkLocal(
+      bookmarkRepository: sl(),
+    ),
+  );
 
   // Cubit
   sl.registerFactory<SignUpCubit>(
@@ -107,6 +131,12 @@ Future<void> init() async {
   );
   sl.registerFactory<ProfileCubit>(
     () => ProfileCubit(),
+  );
+  sl.registerFactory<BookmarkCubit>(
+    () => BookmarkCubit(
+      getBookmarkLocal: sl(),
+      saveBookmarkLocal: sl(),
+    ),
   );
 
   // Services

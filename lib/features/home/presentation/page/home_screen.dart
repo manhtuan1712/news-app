@@ -49,10 +49,14 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SafeArea(
-          child: BlocSelector<ProfileCubit, ProfileState, User?>(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        toolbarHeight: 0.0,
+      ),
+      body: Column(
+        children: [
+          BlocSelector<ProfileCubit, ProfileState, User?>(
             selector: (state) {
               if (state is ProfileGetCurrentUserState) {
                 return state.user;
@@ -63,104 +67,106 @@ class HomeScreenState extends State<HomeScreen> {
               user: user,
             ),
           ),
-        ),
-        BlocSelector<HomeSourceCubit, HomeSourceState, List<SourceModel>?>(
-          selector: (state) {
-            if (state is HomeSourceGetSuccessState) {
-              _sourceId = state.sources?[0].id ?? '';
-              context.read<HomeArticleCubit>().getTopHeadlinesAction(
-                    '',
-                    1,
-                    _sourceId,
-                  );
-              return state.sources;
-            }
-            return null;
-          },
-          builder: (context, sources) => HomeSourceSelectionWidget(
-            sources: sources ?? [],
-            onSourceSelected: (value) {
-              _sourceId = value.id!;
-              context.read<HomeArticleCubit>().getTopHeadlinesAction(
-                    _searchController.text,
-                    1,
-                    _sourceId,
-                  );
-              setState(() {});
-            },
-            sourceIdSelected: _sourceId,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 32.0,
-          ),
-          child: BaseTextFieldWidget(
-            textEditingController: _searchController,
-            height: 45.0,
-            hintText: S.of(context).mainSearch,
-            background: Theme.of(context).colorScheme.scrim,
-            padding: const EdgeInsets.only(
-              left: 16.0,
-            ),
-            colorText: Theme.of(context).colorScheme.surfaceDim,
-            suffix: _searchController.text.isNotEmpty
-                ? Icon(
-                    Icons.cancel,
-                    color: Theme.of(context).colorScheme.surface,
-                  )
-                : null,
-            onTapSuffix: () {
-              _searchController.clear();
-              context.read<HomeArticleCubit>().getTopHeadlinesAction(
-                    '',
-                    1,
-                    _sourceId,
-                  );
-              setState(() {});
-            },
-            rightPosition: 16.0,
-            onChanged: (value) {
-              if (_debounce?.isActive ?? false) _debounce!.cancel();
-              _debounce = Timer(
-                const Duration(
-                  milliseconds: 500,
-                ),
-                () {
-                  context.read<HomeArticleCubit>().getTopHeadlinesAction(
-                        value,
-                        1,
-                        _sourceId,
-                      );
-                },
-              );
-              setState(() {});
-            },
-          ),
-        ),
-        BlocSelector<HomeArticleCubit, HomeArticleState, List<ArticleModel>?>(
-          selector: (state) {
-            if (state is HomeGetTopHeadLinesSuccessState) {
-              EasyLoading.dismiss();
-              return state.articles;
-            } else {
-              EasyLoading.show();
+          BlocSelector<HomeSourceCubit, HomeSourceState, List<SourceModel>?>(
+            selector: (state) {
+              if (state is HomeSourceGetSuccessState) {
+                _sourceId = state.sources?[0].id ?? '';
+                context.read<HomeArticleCubit>().getTopHeadlinesAction(
+                      '',
+                      1,
+                      _sourceId,
+                    );
+                return state.sources;
+              }
               return null;
-            }
-          },
-          builder: (context, articles) {
-            return Expanded(
-              child: articles?.isEmpty ?? false
-                  ? const HomeBodyEmptyWidget()
-                  : HomeBodyWidget(
-                      articles: articles ?? [],
-                      onRefresh: () =>
-                          context.read<HomeSourceCubit>().getSourcesAction(),
-                    ),
-            );
-          },
-        ),
-      ],
+            },
+            builder: (context, sources) => HomeSourceSelectionWidget(
+              sources: sources ?? [],
+              onSourceSelected: (value) {
+                _sourceId = value.id!;
+                context.read<HomeArticleCubit>().getTopHeadlinesAction(
+                      _searchController.text,
+                      1,
+                      _sourceId,
+                    );
+                setState(() {});
+              },
+              sourceIdSelected: _sourceId,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 32.0,
+            ),
+            child: BaseTextFieldWidget(
+              textEditingController: _searchController,
+              height: 45.0,
+              hintText: S.of(context).mainSearch,
+              background: Theme.of(context).colorScheme.scrim,
+              padding: const EdgeInsets.only(
+                left: 16.0,
+              ),
+              colorText: Theme.of(context).colorScheme.surfaceDim,
+              suffix: _searchController.text.isNotEmpty
+                  ? Icon(
+                      Icons.cancel,
+                      color: Theme.of(context).colorScheme.surface,
+                    )
+                  : null,
+              onTapSuffix: () {
+                _searchController.clear();
+                context.read<HomeArticleCubit>().getTopHeadlinesAction(
+                      '',
+                      1,
+                      _sourceId,
+                    );
+                setState(() {});
+              },
+              rightPosition: 16.0,
+              onChanged: (value) {
+                if (_debounce?.isActive ?? false) _debounce!.cancel();
+                _debounce = Timer(
+                  const Duration(
+                    milliseconds: 500,
+                  ),
+                  () {
+                    context.read<HomeArticleCubit>().getTopHeadlinesAction(
+                          value,
+                          1,
+                          _sourceId,
+                        );
+                  },
+                );
+                setState(() {});
+              },
+            ),
+          ),
+          BlocSelector<HomeArticleCubit, HomeArticleState, List<ArticleModel>?>(
+            selector: (state) {
+              if (state is HomeGetTopHeadLinesSuccessState) {
+                EasyLoading.dismiss();
+                return state.articles;
+              } else {
+                EasyLoading.show();
+                return null;
+              }
+            },
+            builder: (context, articles) {
+              return Expanded(
+                child: articles?.isEmpty ?? false
+                    ? HomeBodyEmptyWidget(
+                        text: S.of(context).mainCanNotFindAnything,
+                      )
+                    : HomeBodyWidget(
+                        articles: articles ?? [],
+                        onRefresh: () =>
+                            context.read<HomeSourceCubit>().getSourcesAction(),
+                      ),
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:news_app/features/main/presentation/widget/tab_navigator.dart';
 import 'package:news_app/generated/l10n.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-enum NaviTabItem { home, favorite, profile }
+enum NaviTabItem { home, bookmark, profile }
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -20,7 +20,7 @@ class MainScreenState extends State<MainScreen> {
 
   final Map<NaviTabItem, GlobalKey<NavigatorState>> _navigatorKeys = {
     NaviTabItem.home: GlobalKey<NavigatorState>(),
-    NaviTabItem.favorite: GlobalKey<NavigatorState>(),
+    NaviTabItem.bookmark: GlobalKey<NavigatorState>(),
     NaviTabItem.profile: GlobalKey<NavigatorState>(),
   };
 
@@ -29,7 +29,7 @@ class MainScreenState extends State<MainScreen> {
     if (!mounted) return;
     NaviTabItem tabItem = newIndex == 0
         ? NaviTabItem.home
-        : (newIndex == 1 ? NaviTabItem.favorite : NaviTabItem.profile);
+        : (newIndex == 1 ? NaviTabItem.bookmark : NaviTabItem.profile);
     if (tabItem == _currentTab) {
       _navigatorKeys[tabItem]!.currentState!.popUntil(
             (route) => route.isFirst,
@@ -67,10 +67,10 @@ class MainScreenState extends State<MainScreen> {
           ),
           SalomonBottomBarItem(
             icon: const Icon(
-              Icons.favorite,
+              Icons.bookmark,
             ),
             title: Text(
-              S.of(context).mainFavoriteBottom,
+              S.of(context).mainBookMarkBottom,
               style: AppConstants.textBody2Regular,
             ),
             selectedColor: Theme.of(context).colorScheme.primary,
@@ -98,7 +98,7 @@ class MainScreenState extends State<MainScreen> {
           ScrollController(),
         ),
         _buildOffstageNavigator(
-          NaviTabItem.favorite,
+          NaviTabItem.bookmark,
           ScrollController(),
         ),
         _buildOffstageNavigator(

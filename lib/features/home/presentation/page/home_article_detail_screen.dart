@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 import 'package:news_app/core/helpers/app_constants.dart';
 import 'package:news_app/core/helpers/global_configs.dart';
+import 'package:news_app/features/bookmark/presentation/cubit/bookmark_cubit.dart';
 import 'package:news_app/features/home/data/models/response/article_model.dart';
 import 'package:news_app/generated/l10n.dart';
 import 'package:share_plus/share_plus.dart';
@@ -11,9 +13,12 @@ import 'package:share_plus/share_plus.dart';
 class HomeArticleDetailScreen extends StatefulWidget {
   final ArticleModel articleModel;
 
+  final String type;
+
   const HomeArticleDetailScreen({
     super.key,
     required this.articleModel,
+    required this.type,
   });
 
   @override
@@ -22,6 +27,14 @@ class HomeArticleDetailScreen extends StatefulWidget {
 }
 
 class _HomeArticleDetailScreenState extends State<HomeArticleDetailScreen> {
+  late bool _isBookmark;
+
+  @override
+  void initState() {
+    super.initState();
+    _isBookmark = widget.articleModel.isBookmark ?? false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,9 +67,16 @@ class _HomeArticleDetailScreenState extends State<HomeArticleDetailScreen> {
             Row(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    _isBookmark = !_isBookmark;
+                    await context.read<BookmarkCubit>().saveBookmarkLocalAction(
+                          widget.articleModel,
+                          !_isBookmark,
+                        );
+                    setState(() {});
+                  },
                   icon: Icon(
-                    Icons.bookmark_border,
+                    _isBookmark ? Icons.bookmark : Icons.bookmark_border,
                     color: Theme.of(context).colorScheme.surfaceDim,
                   ),
                 ),
@@ -81,7 +101,7 @@ class _HomeArticleDetailScreenState extends State<HomeArticleDetailScreen> {
         child: Column(
           children: [
             Hero(
-              tag: widget.articleModel.urlToImage ?? '',
+              tag: '${widget.articleModel.urlToImage}-${widget.type}',
               child: CachedNetworkImage(
                 imageUrl: widget.articleModel.urlToImage ?? '',
                 width: MediaQuery.sizeOf(context).width,

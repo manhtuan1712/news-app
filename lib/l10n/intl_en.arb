@@ -19,7 +19,7 @@
   "firebaseAuthErrorWrongPassword": "Incorrect password",
   "firebaseAuthErrorGeneral": "System error, please try again later",
   "mainHomeBottom": "Home",
-  "mainFavoriteBottom": "Favorite",
+  "mainBookMarkBottom": "Bookmark",
   "mainProfileBottom": "Profile",
   "mainGoodMorning": "Good Morning",
   "mainGoodAfternoon": "Good Afternoon",
@@ -27,5 +27,6 @@
   "mainGoodNight": "Good Night",
   "mainSearch": "Search articles...",
   "mainCanNotFindAnything": "Can not find any article",
+  "mainCanNotFindBookmark": "You do not have any bookmark",
   "articleDetailCheckOut": "Views new"
 }

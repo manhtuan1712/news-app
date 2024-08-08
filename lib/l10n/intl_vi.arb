@@ -19,7 +19,7 @@
   "firebaseAuthErrorWrongPassword": "Mật khẩu sai",
   "firebaseAuthErrorGeneral": "Lỗi hệ thống, vui lòng thử lại sau",
   "mainHomeBottom": "Trang chủ",
-  "mainFavoriteBottom": "Yêu Thích",
+  "mainBookMarkBottom": "Đánh dấu",
   "mainProfileBottom": "Hồ sơ",
   "mainGoodMorning": "Chào buổi sáng",
   "mainGoodAfternoon": "Chào buổi trưa",
@@ -27,5 +27,6 @@
   "mainGoodNight": "Chào buổi tối",
   "mainSearch": "Tìm kiếm bài viết...",
   "mainCanNotFindAnything": "Không tìm thấy bài viết nào",
+  "mainCanNotFindBookmark": "Bạn không có bài đánh dấu nào",
   "articleDetailCheckOut": "Xem tin tức"
 }

@@ -8,7 +8,7 @@ import 'dart:async' as _i4;
 import 'package:firebase_auth/firebase_auth.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i5;
-import 'package:news_app/features/authentication/data/datasources/authetication_remote_data_source.dart'
+import 'package:news_app/features/authentication/data/datasource/authentication_remote_data_source.dart'
     as _i3;
 
 // ignore_for_file: type=lint
