@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "articleDetailCheckOut":
+            MessageLookupByLibrary.simpleMessage("Views new"),
         "firebaseAuthErrorDisable":
             MessageLookupByLibrary.simpleMessage("Account disabled"),
         "firebaseAuthErrorEmailAlreadyInUse":
@@ -47,9 +49,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginSignUp": MessageLookupByLibrary.simpleMessage("Sign up"),
         "loginToYourAccount":
             MessageLookupByLibrary.simpleMessage("Login to your account"),
+        "mainCanNotFindAnything":
+            MessageLookupByLibrary.simpleMessage("Can not find any article"),
         "mainFavoriteBottom": MessageLookupByLibrary.simpleMessage("Favorite"),
+        "mainGoodAfternoon":
+            MessageLookupByLibrary.simpleMessage("Good Afternoon"),
+        "mainGoodEvening": MessageLookupByLibrary.simpleMessage("Good Evening"),
+        "mainGoodMorning": MessageLookupByLibrary.simpleMessage("Good Morning"),
+        "mainGoodNight": MessageLookupByLibrary.simpleMessage("Good Night"),
         "mainHomeBottom": MessageLookupByLibrary.simpleMessage("Home"),
         "mainProfileBottom": MessageLookupByLibrary.simpleMessage("Profile"),
+        "mainSearch":
+            MessageLookupByLibrary.simpleMessage("Search articles..."),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
         "signUpConfirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),

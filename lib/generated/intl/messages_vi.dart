@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "articleDetailCheckOut":
+            MessageLookupByLibrary.simpleMessage("Xem tin tức"),
         "firebaseAuthErrorDisable":
             MessageLookupByLibrary.simpleMessage("Tài khoản đã bị vô hiệu hoá"),
         "firebaseAuthErrorEmailAlreadyInUse":
@@ -47,9 +49,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginSignUp": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
             "Đăng nhập vào tài khoản của bạn"),
+        "mainCanNotFindAnything":
+            MessageLookupByLibrary.simpleMessage("Không tìm thấy bài viết nào"),
         "mainFavoriteBottom": MessageLookupByLibrary.simpleMessage("Yêu Thích"),
+        "mainGoodAfternoon":
+            MessageLookupByLibrary.simpleMessage("Chào buổi trưa"),
+        "mainGoodEvening":
+            MessageLookupByLibrary.simpleMessage("Chào buổi chiều"),
+        "mainGoodMorning":
+            MessageLookupByLibrary.simpleMessage("Chào buổi sáng"),
+        "mainGoodNight": MessageLookupByLibrary.simpleMessage("Chào buổi tối"),
         "mainHomeBottom": MessageLookupByLibrary.simpleMessage("Trang chủ"),
         "mainProfileBottom": MessageLookupByLibrary.simpleMessage("Hồ sơ"),
+        "mainSearch":
+            MessageLookupByLibrary.simpleMessage("Tìm kiếm bài viết..."),
         "signUp": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "signUpConfirmPassword":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),

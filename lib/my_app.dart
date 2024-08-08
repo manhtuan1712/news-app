@@ -13,14 +13,15 @@ import 'package:news_app/core/theme/theme_style.dart';
 import 'package:news_app/features/authentication/presentation/cubit/login_cubit.dart';
 import 'package:news_app/features/authentication/presentation/cubit/sign_up_cubit.dart';
 import 'package:news_app/features/main/presentation/page/main_screen.dart';
+import 'package:news_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:news_app/generated/l10n.dart';
 
 import 'features/authentication/presentation/page/login_screen.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   MyAppState createState() => MyAppState();
@@ -44,6 +45,9 @@ class MyAppState extends State<MyApp> {
         ),
         BlocProvider(
           create: (_) => sl<SignUpCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => sl<ProfileCubit>(),
         ),
       ],
       child: MaterialApp(

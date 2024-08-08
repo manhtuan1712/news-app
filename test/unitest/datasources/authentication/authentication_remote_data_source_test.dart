@@ -18,13 +18,13 @@ import 'authentication_remote_data_source_test.mocks.dart';
   ],
 )
 void main() {
-  late MockAuthenticationRemoteDataSource authenticationRemoteDataSourceImpl;
+  late MockAuthenticationRemoteDataSource mockAuthenticationRemoteDataSource;
 
   late MockUser mockUser;
 
   setUp(
     () {
-      authenticationRemoteDataSourceImpl = MockAuthenticationRemoteDataSource();
+      mockAuthenticationRemoteDataSource = MockAuthenticationRemoteDataSource();
       mockUser = MockUser();
       when(mockUser.uid).thenReturn('fake_uid');
       when(mockUser.email).thenReturn('fakeuser@example.com');
@@ -36,7 +36,7 @@ void main() {
     'signUp with password and confirm password not match should throw FirebaseAuthException',
     () async {
       when(
-        authenticationRemoteDataSourceImpl.signUp(
+        mockAuthenticationRemoteDataSource.signUp(
           any,
           any,
           any,
@@ -48,7 +48,7 @@ void main() {
         ),
       );
       expect(
-        () => authenticationRemoteDataSourceImpl.signUp(
+        () => mockAuthenticationRemoteDataSource.signUp(
           'abc@gmail.com',
           'password123',
           'confirmPassword123',
@@ -68,7 +68,7 @@ void main() {
     'signUp with exist email should throw FirebaseAuthException',
     () async {
       when(
-        authenticationRemoteDataSourceImpl.signUp(
+        mockAuthenticationRemoteDataSource.signUp(
           any,
           any,
           any,
@@ -79,7 +79,7 @@ void main() {
         ),
       );
       expect(
-        () => authenticationRemoteDataSourceImpl.signUp(
+        () => mockAuthenticationRemoteDataSource.signUp(
           'abc@gmail.com',
           'password123',
           'password123',
@@ -99,7 +99,7 @@ void main() {
     'signUp with weak password should throw FirebaseAuthException',
     () async {
       when(
-        authenticationRemoteDataSourceImpl.signUp(
+        mockAuthenticationRemoteDataSource.signUp(
           any,
           any,
           any,
@@ -110,7 +110,7 @@ void main() {
         ),
       );
       expect(
-        () => authenticationRemoteDataSourceImpl.signUp(
+        () => mockAuthenticationRemoteDataSource.signUp(
           'abc@gmail.com',
           'abc',
           'abc',
@@ -130,7 +130,7 @@ void main() {
     'signUp with unknown error should throw FirebaseAuthException',
     () async {
       when(
-        authenticationRemoteDataSourceImpl.signUp(
+        mockAuthenticationRemoteDataSource.signUp(
           any,
           any,
           any,
@@ -141,7 +141,7 @@ void main() {
         ),
       );
       expect(
-        () => authenticationRemoteDataSourceImpl.signUp(
+        () => mockAuthenticationRemoteDataSource.signUp(
           'abc@gmail.com',
           'abc@123',
           'abc@123',
@@ -161,7 +161,7 @@ void main() {
     'signUp successfully',
     () async {
       when(
-        authenticationRemoteDataSourceImpl.signUp(
+        mockAuthenticationRemoteDataSource.signUp(
           any,
           any,
           any,
@@ -169,7 +169,7 @@ void main() {
       ).thenAnswer(
         (_) async => mockUser,
       );
-      final user = await authenticationRemoteDataSourceImpl.signUp(
+      final user = await mockAuthenticationRemoteDataSource.signUp(
         'abc@gmail.com',
         'abc@123',
         'abc@123',
@@ -186,7 +186,7 @@ void main() {
     'login with wrong password should throw FirebaseAuthException',
     () async {
       when(
-        authenticationRemoteDataSourceImpl.login(
+        mockAuthenticationRemoteDataSource.login(
           any,
           any,
         ),
@@ -196,7 +196,7 @@ void main() {
         ),
       );
       expect(
-        () => authenticationRemoteDataSourceImpl.login(
+        () => mockAuthenticationRemoteDataSource.login(
           'abc@gmail.com',
           'abc@123',
         ),
@@ -215,7 +215,7 @@ void main() {
     'login with disable email should throw FirebaseAuthException',
     () async {
       when(
-        authenticationRemoteDataSourceImpl.login(
+        mockAuthenticationRemoteDataSource.login(
           any,
           any,
         ),
@@ -225,7 +225,7 @@ void main() {
         ),
       );
       expect(
-        () => authenticationRemoteDataSourceImpl.login(
+        () => mockAuthenticationRemoteDataSource.login(
           'abc@gmail.com',
           'abc@123',
         ),
@@ -244,7 +244,7 @@ void main() {
     'login with invalid user should throw FirebaseAuthException',
     () async {
       when(
-        authenticationRemoteDataSourceImpl.login(
+        mockAuthenticationRemoteDataSource.login(
           any,
           any,
         ),
@@ -254,7 +254,7 @@ void main() {
         ),
       );
       expect(
-        () => authenticationRemoteDataSourceImpl.login(
+        () => mockAuthenticationRemoteDataSource.login(
           'abc@gmail.com',
           'abc@123',
         ),
@@ -273,7 +273,7 @@ void main() {
     'login with unknown error should throw FirebaseAuthException',
     () async {
       when(
-        authenticationRemoteDataSourceImpl.login(
+        mockAuthenticationRemoteDataSource.login(
           any,
           any,
         ),
@@ -283,7 +283,7 @@ void main() {
         ),
       );
       expect(
-        () => authenticationRemoteDataSourceImpl.login(
+        () => mockAuthenticationRemoteDataSource.login(
           'abc@gmail.com',
           'abc@123',
         ),
@@ -302,14 +302,14 @@ void main() {
     'login successfully',
     () async {
       when(
-        authenticationRemoteDataSourceImpl.login(
+        mockAuthenticationRemoteDataSource.login(
           any,
           any,
         ),
       ).thenAnswer(
         (_) async => mockUser,
       );
-      final user = await authenticationRemoteDataSourceImpl.login(
+      final user = await mockAuthenticationRemoteDataSource.login(
         'abc@gmail.com',
         'abc@123',
       );

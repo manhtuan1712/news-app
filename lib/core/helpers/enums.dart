@@ -28,3 +28,15 @@ class FirebaseAuthErrorCode {
   static const invalidCredential =
       FirebaseAuthErrorCode._internal('invalid-credential');
 }
+
+class HiveSuccessCode {
+  final String _value;
+
+  const HiveSuccessCode._internal(this._value);
+
+  String get() => _value;
+
+  static const success = HiveSuccessCode._internal('success');
+  static const failed = HiveSuccessCode._internal('failed');
+  static const empty = HiveSuccessCode._internal('empty');
+}

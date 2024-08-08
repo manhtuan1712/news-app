@@ -46,6 +46,7 @@ class MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: _buildTabContent(),
       bottomNavigationBar: SalomonBottomBar(
+        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         currentIndex: _currentIndex,
         onTap: (i) {
           _tabSelected(i);

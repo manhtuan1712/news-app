@@ -259,6 +259,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Good Morning`
+  String get mainGoodMorning {
+    return Intl.message(
+      'Good Morning',
+      name: 'mainGoodMorning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Afternoon`
+  String get mainGoodAfternoon {
+    return Intl.message(
+      'Good Afternoon',
+      name: 'mainGoodAfternoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Evening`
+  String get mainGoodEvening {
+    return Intl.message(
+      'Good Evening',
+      name: 'mainGoodEvening',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Night`
+  String get mainGoodNight {
+    return Intl.message(
+      'Good Night',
+      name: 'mainGoodNight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search articles...`
+  String get mainSearch {
+    return Intl.message(
+      'Search articles...',
+      name: 'mainSearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can not find any article`
+  String get mainCanNotFindAnything {
+    return Intl.message(
+      'Can not find any article',
+      name: 'mainCanNotFindAnything',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Views new`
+  String get articleDetailCheckOut {
+    return Intl.message(
+      'Views new',
+      name: 'articleDetailCheckOut',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,12 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:news_app/core/helpers/app_logger.dart';
 import 'package:news_app/core/helpers/app_utils.dart';
+import 'package:news_app/core/helpers/global_configs.dart';
 
 class DioLoggingInterceptor extends InterceptorsWrapper {
   @override
-  void onRequest(
-      RequestOptions options, RequestInterceptorHandler handler) async {
-    await addTokenHeader(options);
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    _addXApiKeyHeader(
+      options,
+    );
     logRequest(options);
     super.onRequest(options, handler);
   }
@@ -96,7 +99,7 @@ class DioLoggingInterceptor extends InterceptorsWrapper {
     }
   }
 
-  Future<void> addTokenHeader(RequestOptions options) async {
-    // options.headers['Authorization'] = 'Bearer ${GlobalConfig.accessToken}';
+  void _addXApiKeyHeader(RequestOptions options) {
+    options.headers['X-Api-Key'] = dotenv.env[GlobalConfig.newsApiKey];
   }
 }

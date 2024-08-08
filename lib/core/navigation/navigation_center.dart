@@ -5,6 +5,7 @@ class NavigationCenter {
   static const String loginScreen = 'login-screen';
   static const String signUpScreen = 'signup-screen';
   static const String mainScreen = 'main-screen';
+  static const String homeArticleDetailScreen = 'home-article-detail-screen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
