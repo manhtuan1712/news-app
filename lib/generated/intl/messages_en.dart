@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Weak Password"),
         "firebaseAuthErrorWrongPassword":
             MessageLookupByLibrary.simpleMessage("Incorrect password"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
         "loginDoNotHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "loginEmail": MessageLookupByLibrary.simpleMessage("Email"),

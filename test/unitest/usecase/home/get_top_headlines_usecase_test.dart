@@ -7,11 +7,8 @@ import 'package:news_app/core/api/error/failures.dart';
 import 'package:news_app/core/usecase/usecase.dart';
 import 'package:news_app/features/home/data/models/request/request_top_headlines_model.dart';
 import 'package:news_app/features/home/data/models/response/article_model.dart';
-import 'package:news_app/features/home/data/models/response/response_sources_model.dart';
 import 'package:news_app/features/home/data/models/response/response_top_headlines_model.dart';
-import 'package:news_app/features/home/data/models/response/source_model.dart';
 import 'package:news_app/features/home/domain/repository/home_repository.dart';
-import 'package:news_app/features/home/domain/usecase/get_sources.dart';
 import 'package:news_app/features/home/domain/usecase/get_top_headlines.dart';
 
 import 'get_top_headlines_usecase_test.mocks.dart';

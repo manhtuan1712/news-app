@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mật khẩu yếu"),
         "firebaseAuthErrorWrongPassword":
             MessageLookupByLibrary.simpleMessage("Mật khẩu sai"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "loginDoNotHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Không có tài khoản?"),
         "loginEmail": MessageLookupByLibrary.simpleMessage("Email"),

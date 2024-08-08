@@ -77,78 +77,80 @@ class _HomeArticleDetailScreenState extends State<HomeArticleDetailScreen> {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          Hero(
-            tag: widget.articleModel.urlToImage ?? '',
-            child: CachedNetworkImage(
-              imageUrl: widget.articleModel.urlToImage ?? '',
-              width: MediaQuery.sizeOf(context).width,
-              fit: BoxFit.fitWidth,
-              errorWidget: (context, url, error) => SpinKitFadingCircle(
-                color: Theme.of(context).colorScheme.primary,
-                size: 30.0,
-              ),
-              placeholder: (context, url) => SpinKitFadingCircle(
-                color: Theme.of(context).colorScheme.primary,
-                size: 30.0,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Hero(
+              tag: widget.articleModel.urlToImage ?? '',
+              child: CachedNetworkImage(
+                imageUrl: widget.articleModel.urlToImage ?? '',
+                width: MediaQuery.sizeOf(context).width,
+                fit: BoxFit.fitWidth,
+                errorWidget: (context, url, error) => SpinKitFadingCircle(
+                  color: Theme.of(context).colorScheme.primary,
+                  size: 30.0,
+                ),
+                placeholder: (context, url) => SpinKitFadingCircle(
+                  color: Theme.of(context).colorScheme.primary,
+                  size: 30.0,
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 24.0,
-              horizontal: 32.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.articleModel.title ?? '',
-                  style: AppConstants.textHeadingH4.copyWith(
-                    color: Theme.of(context).colorScheme.surfaceDim,
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 24.0,
+                horizontal: 32.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.articleModel.title ?? '',
+                    style: AppConstants.textHeadingH4.copyWith(
+                      color: Theme.of(context).colorScheme.surfaceDim,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 16.0,
-                ),
-                Wrap(
-                  children: [
-                    Visibility(
-                      visible: widget.articleModel.author != null,
-                      child: Text(
-                        '${widget.articleModel.author} · ',
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                  Wrap(
+                    children: [
+                      Visibility(
+                        visible: widget.articleModel.author != null,
+                        child: Text(
+                          '${widget.articleModel.author} · ',
+                          style: AppConstants.textFootNoteRegular.copyWith(
+                            color: Theme.of(context).colorScheme.surfaceTint,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        DateFormat(GlobalConfig.dateTimeFormatArticleDetail)
+                            .format(
+                          DateTime.parse(
+                            widget.articleModel.publishedAt ?? '',
+                          ),
+                        ),
                         style: AppConstants.textFootNoteRegular.copyWith(
                           color: Theme.of(context).colorScheme.surfaceTint,
                         ),
                       ),
-                    ),
-                    Text(
-                      DateFormat(GlobalConfig.dateTimeFormatArticleDetail)
-                          .format(
-                        DateTime.parse(
-                          widget.articleModel.publishedAt ?? '',
-                        ),
-                      ),
-                      style: AppConstants.textFootNoteRegular.copyWith(
-                        color: Theme.of(context).colorScheme.surfaceTint,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 16.0,
-                ),
-                Text(
-                  widget.articleModel.content ?? '',
-                  style: AppConstants.textBody1Regular.copyWith(
-                    color: Theme.of(context).colorScheme.surfaceTint,
+                    ],
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                  Text(
+                    widget.articleModel.content ?? '',
+                    style: AppConstants.textBody1Regular.copyWith(
+                      color: Theme.of(context).colorScheme.surfaceTint,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

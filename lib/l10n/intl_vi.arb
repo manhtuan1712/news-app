@@ -6,6 +6,7 @@
   "loginPassword": "Mật khẩu",
   "loginSignIn": "Đăng nhập",
   "signUp": "Đăng ký",
+  "logOut": "Đăng xuất",
   "signUpCreateYourAccount": "Tạo tài khoản của bạn",
   "signUpConfirmPassword": "Xác nhận mật khẩu",
   "signUpEmailWrongFormat": "Email không đúng định đạng",
