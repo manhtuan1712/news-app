@@ -7,9 +7,9 @@ import 'dart:async' as _i5;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i9;
-import 'package:news_app/features/home/data/datasoures/home_local_data_source.dart'
+import 'package:news_app/features/home/data/datasource/home_local_data_source.dart'
     as _i7;
-import 'package:news_app/features/home/data/datasoures/home_remote_data_source.dart'
+import 'package:news_app/features/home/data/datasource/home_remote_data_source.dart'
     as _i4;
 import 'package:news_app/features/home/data/models/request/request_top_headlines_model.dart'
     as _i6;

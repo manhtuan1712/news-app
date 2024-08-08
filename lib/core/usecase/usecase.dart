@@ -65,3 +65,17 @@ class RequestTopHeadlinesLocalParams extends Equatable {
   @override
   List<Object> get props => [articles];
 }
+
+class RequestBookmarkLocalParams extends Equatable {
+  final ArticleModel article;
+
+  final bool isRemove;
+
+  const RequestBookmarkLocalParams({
+    required this.article,
+    required this.isRemove,
+  });
+
+  @override
+  List<Object> get props => [article, isRemove];
+}

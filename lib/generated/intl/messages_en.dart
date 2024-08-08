@@ -50,9 +50,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginSignUp": MessageLookupByLibrary.simpleMessage("Sign up"),
         "loginToYourAccount":
             MessageLookupByLibrary.simpleMessage("Login to your account"),
+        "mainBookMarkBottom": MessageLookupByLibrary.simpleMessage("Bookmark"),
         "mainCanNotFindAnything":
             MessageLookupByLibrary.simpleMessage("Can not find any article"),
-        "mainFavoriteBottom": MessageLookupByLibrary.simpleMessage("Favorite"),
+        "mainCanNotFindBookmark": MessageLookupByLibrary.simpleMessage(
+            "You do not have any bookmark"),
         "mainGoodAfternoon":
             MessageLookupByLibrary.simpleMessage("Good Afternoon"),
         "mainGoodEvening": MessageLookupByLibrary.simpleMessage("Good Evening"),

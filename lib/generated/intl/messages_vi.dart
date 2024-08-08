@@ -50,9 +50,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginSignUp": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
             "Đăng nhập vào tài khoản của bạn"),
+        "mainBookMarkBottom": MessageLookupByLibrary.simpleMessage("Đánh dấu"),
         "mainCanNotFindAnything":
             MessageLookupByLibrary.simpleMessage("Không tìm thấy bài viết nào"),
-        "mainFavoriteBottom": MessageLookupByLibrary.simpleMessage("Yêu Thích"),
+        "mainCanNotFindBookmark": MessageLookupByLibrary.simpleMessage(
+            "Bạn không có bài đánh dấu nào"),
         "mainGoodAfternoon":
             MessageLookupByLibrary.simpleMessage("Chào buổi trưa"),
         "mainGoodEvening":

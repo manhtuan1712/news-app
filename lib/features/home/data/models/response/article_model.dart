@@ -27,6 +27,9 @@ class ArticleModel {
   @HiveField(6)
   final String? content;
 
+  @HiveField(7)
+  bool? isBookmark;
+
   ArticleModel({
     this.author,
     this.title,
@@ -35,6 +38,7 @@ class ArticleModel {
     this.urlToImage,
     this.publishedAt,
     this.content,
+    this.isBookmark,
   });
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) =>

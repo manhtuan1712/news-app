@@ -1,20 +1,26 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 import 'package:news_app/core/helpers/app_constants.dart';
 import 'package:news_app/core/helpers/app_utils.dart';
+import 'package:news_app/core/helpers/enums.dart';
 import 'package:news_app/core/helpers/global_configs.dart';
 import 'package:news_app/core/navigation/navigation_center.dart';
+import 'package:news_app/features/bookmark/presentation/cubit/bookmark_cubit.dart';
 import 'package:news_app/features/home/data/models/response/article_model.dart';
 import 'package:news_app/features/home/presentation/page/home_article_detail_screen.dart';
 
 class BaseArticleWidget extends StatelessWidget {
   final ArticleModel articleModel;
 
+  final String type;
+
   const BaseArticleWidget({
     super.key,
     required this.articleModel,
+    required this.type,
   });
 
   @override
@@ -26,6 +32,7 @@ class BaseArticleWidget extends StatelessWidget {
         NavigationCenter.homeArticleDetailScreen,
         HomeArticleDetailScreen(
           articleModel: articleModel,
+          type: type,
         ),
       ),
       child: Row(
@@ -76,7 +83,7 @@ class BaseArticleWidget extends StatelessWidget {
             width: 16.0,
           ),
           Hero(
-            tag: articleModel.urlToImage ?? '',
+            tag: '${articleModel.urlToImage}-$type',
             child: ClipRRect(
               borderRadius: BorderRadius.circular(
                 8.0,
@@ -96,7 +103,25 @@ class BaseArticleWidget extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
+          Visibility(
+            visible: type == ArticleType.bookmark.get(),
+            child: GestureDetector(
+              onTap: () =>
+                  context.read<BookmarkCubit>().saveBookmarkLocalAction(
+                        articleModel,
+                        true,
+                      ),
+              child: Container(
+                margin: const EdgeInsets.only(
+                  left: 4.0,
+                ),
+                child: const Icon(
+                  Icons.bookmark,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

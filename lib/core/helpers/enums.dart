@@ -40,3 +40,14 @@ class HiveSuccessCode {
   static const failed = HiveSuccessCode._internal('failed');
   static const empty = HiveSuccessCode._internal('empty');
 }
+
+class ArticleType {
+  final String _value;
+
+  const ArticleType._internal(this._value);
+
+  String get() => _value;
+
+  static const bookmark = HiveSuccessCode._internal('bookmark');
+  static const home = HiveSuccessCode._internal('home');
+}

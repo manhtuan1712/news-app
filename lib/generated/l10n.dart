@@ -250,11 +250,11 @@ class S {
     );
   }
 
-  /// `Favorite`
-  String get mainFavoriteBottom {
+  /// `Bookmark`
+  String get mainBookMarkBottom {
     return Intl.message(
-      'Favorite',
-      name: 'mainFavoriteBottom',
+      'Bookmark',
+      name: 'mainBookMarkBottom',
       desc: '',
       args: [],
     );
@@ -325,6 +325,16 @@ class S {
     return Intl.message(
       'Can not find any article',
       name: 'mainCanNotFindAnything',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You do not have any bookmark`
+  String get mainCanNotFindBookmark {
+    return Intl.message(
+      'You do not have any bookmark',
+      name: 'mainCanNotFindBookmark',
       desc: '',
       args: [],
     );

@@ -24,13 +24,14 @@ class ArticleModelAdapter extends TypeAdapter<ArticleModel> {
       urlToImage: fields[4] as String?,
       publishedAt: fields[5] as String?,
       content: fields[6] as String?,
+      isBookmark: fields[7] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, ArticleModel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.author)
       ..writeByte(1)
@@ -44,7 +45,9 @@ class ArticleModelAdapter extends TypeAdapter<ArticleModel> {
       ..writeByte(5)
       ..write(obj.publishedAt)
       ..writeByte(6)
-      ..write(obj.content);
+      ..write(obj.content)
+      ..writeByte(7)
+      ..write(obj.isBookmark);
   }
 
   @override
@@ -70,6 +73,7 @@ ArticleModel _$ArticleModelFromJson(Map<String, dynamic> json) => ArticleModel(
       urlToImage: json['urlToImage'] as String?,
       publishedAt: json['publishedAt'] as String?,
       content: json['content'] as String?,
+      isBookmark: json['isBookmark'] as bool?,
     );
 
 Map<String, dynamic> _$ArticleModelToJson(ArticleModel instance) =>
@@ -81,4 +85,5 @@ Map<String, dynamic> _$ArticleModelToJson(ArticleModel instance) =>
       'urlToImage': instance.urlToImage,
       'publishedAt': instance.publishedAt,
       'content': instance.content,
+      'isBookmark': instance.isBookmark,
     };

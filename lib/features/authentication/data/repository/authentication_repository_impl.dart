@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:news_app/core/api/error/failures.dart';
-import 'package:news_app/features/authentication/data/datasources/authetication_remote_data_source.dart';
+import 'package:news_app/features/authentication/data/datasource/authentication_remote_data_source.dart';
 import 'package:news_app/features/authentication/domain/repository/authentication_repository.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {

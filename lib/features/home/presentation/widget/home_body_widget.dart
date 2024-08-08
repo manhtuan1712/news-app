@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/base/widget/base_article_widget.dart';
+import 'package:news_app/core/helpers/enums.dart';
 import 'package:news_app/features/home/data/models/response/article_model.dart';
 
 class HomeBodyWidget extends StatelessWidget {
@@ -31,6 +32,7 @@ class HomeBodyWidget extends StatelessWidget {
           ),
           itemBuilder: (context, index) => BaseArticleWidget(
             articleModel: articles[index],
+            type: ArticleType.home.get(),
           ),
           itemCount: articles.length,
         ),

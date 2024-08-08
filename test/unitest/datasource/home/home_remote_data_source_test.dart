@@ -1,36 +1,28 @@
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:news_app/core/api/error/failures.dart';
-import 'package:news_app/features/home/data/datasource/home_local_data_source.dart';
+import 'package:news_app/core/api/service/base/base_rest_service.dart';
 import 'package:news_app/features/home/data/datasource/home_remote_data_source.dart';
 import 'package:news_app/features/home/data/models/request/request_top_headlines_model.dart';
 import 'package:news_app/features/home/data/models/response/article_model.dart';
 import 'package:news_app/features/home/data/models/response/response_sources_model.dart';
 import 'package:news_app/features/home/data/models/response/response_top_headlines_model.dart';
 import 'package:news_app/features/home/data/models/response/source_model.dart';
-import 'package:news_app/features/home/data/repository/home_repository_impl.dart';
 
-import 'home_repository_test.mocks.dart';
+import 'home_remote_data_source_test.mocks.dart';
 
 @GenerateNiceMocks(
   [
-    MockSpec<HomeRemoteDataSource>(
-      as: #MockHomeRemoteDataSource,
-    ),
-    MockSpec<HomeLocalDataSource>(
-      as: #MockHomeLocalDataSource,
+    MockSpec<BaseRestService>(
+      as: #MockBaseService,
     ),
   ],
 )
 void main() {
-  late MockHomeRemoteDataSource mockHomeRemoteDataSource;
+  late HomeRemoteDataSourceImpl homeRemoteDataSource;
 
-  late MockHomeLocalDataSource mockHomeLocalDataSource;
-
-  late HomeRepositoryImpl homeRepositoryImpl;
+  MockBaseService mockBaseService = MockBaseService();
 
   final List<SourceModel> sources = <SourceModel>[
     SourceModel(
@@ -100,11 +92,8 @@ void main() {
 
   setUp(
     () {
-      mockHomeRemoteDataSource = MockHomeRemoteDataSource();
-      mockHomeLocalDataSource = MockHomeLocalDataSource();
-      homeRepositoryImpl = HomeRepositoryImpl(
-        homeRemoteDataSource: mockHomeRemoteDataSource,
-        homeLocalDataSource: mockHomeLocalDataSource,
+      homeRemoteDataSource = HomeRemoteDataSourceImpl(
+        baseRestService: mockBaseService,
       );
     },
   );
@@ -114,14 +103,14 @@ void main() {
     'Get sources api and throw DioException',
     () async {
       when(
-        mockHomeRemoteDataSource.getSources(),
+        mockBaseService.getSources(),
       ).thenThrow(
         DioException(
           requestOptions: RequestOptions(),
         ),
       );
       try {
-        await homeRepositoryImpl.getSources();
+        await homeRemoteDataSource.getSources();
         assert(false);
       } catch (exception) {
         assert(true);
@@ -133,17 +122,17 @@ void main() {
     'Get sources api and return source list',
     () async {
       when(
-        mockHomeRemoteDataSource.getSources(),
+        mockBaseService.getSources(),
       ).thenAnswer(
         (_) async => ResponseSourcesModel(
           sources: sources,
         ),
       );
-      final Either<ServerFailure, ResponseSourcesModel> response =
-          await homeRepositoryImpl.getSources();
+      final ResponseSourcesModel response =
+          await homeRemoteDataSource.getSources();
       expect(
         sources,
-        response.toOption().toNullable()?.sources,
+        response.sources,
       );
     },
   );
@@ -153,7 +142,7 @@ void main() {
     'Get top headlines api and throw DioException',
     () async {
       when(
-        mockHomeRemoteDataSource.getTopHeadlines(
+        mockBaseService.getTopHeadlines(
           any,
         ),
       ).thenThrow(
@@ -162,7 +151,7 @@ void main() {
         ),
       );
       try {
-        await homeRepositoryImpl.getTopHeadlines(
+        await homeRemoteDataSource.getTopHeadlines(
           RequestTopHeadlinesModel(
             sources: 'bbc-sport',
             page: 1,
@@ -180,7 +169,7 @@ void main() {
     'Get top headlines api and return articles list',
     () async {
       when(
-        mockHomeRemoteDataSource.getTopHeadlines(
+        mockBaseService.getTopHeadlines(
           any,
         ),
       ).thenAnswer(
@@ -188,8 +177,8 @@ void main() {
           articles: articles,
         ),
       );
-      final Either<ServerFailure, ResponseTopHeadlinesModel> response =
-          await homeRepositoryImpl.getTopHeadlines(
+      final ResponseTopHeadlinesModel response =
+          await homeRemoteDataSource.getTopHeadlines(
         RequestTopHeadlinesModel(
           sources: 'bbc-sport',
           page: 1,
@@ -198,7 +187,7 @@ void main() {
       );
       expect(
         articles,
-        response.toOption().toNullable()?.articles,
+        response.articles,
       );
     },
   );

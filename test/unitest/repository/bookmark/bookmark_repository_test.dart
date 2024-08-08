@@ -1,28 +1,34 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:news_app/core/api/service/base/base_rest_service.dart';
-import 'package:news_app/features/home/data/datasoures/home_remote_data_source.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:news_app/core/api/error/failures.dart';
+import 'package:news_app/features/bookmark/data/datasource/bookmark_local_data_source.dart';
+import 'package:news_app/features/bookmark/data/repository/bookmark_repository_impl.dart';
+import 'package:news_app/features/home/data/datasource/home_local_data_source.dart';
+import 'package:news_app/features/home/data/datasource/home_remote_data_source.dart';
 import 'package:news_app/features/home/data/models/request/request_top_headlines_model.dart';
 import 'package:news_app/features/home/data/models/response/article_model.dart';
 import 'package:news_app/features/home/data/models/response/response_sources_model.dart';
 import 'package:news_app/features/home/data/models/response/response_top_headlines_model.dart';
 import 'package:news_app/features/home/data/models/response/source_model.dart';
+import 'package:news_app/features/home/data/repository/home_repository_impl.dart';
 
-import 'home_remote_data_source_test.mocks.dart';
+import 'bookmark_repository_test.mocks.dart';
 
 @GenerateNiceMocks(
   [
-    MockSpec<BaseRestService>(
-      as: #MockBaseService,
+    MockSpec<BookmarkLocalDataSource>(
+      as: #MockBookmarkLocalDataSource,
     ),
   ],
 )
 void main() {
-  late HomeRemoteDataSourceImpl homeRemoteDataSource;
+  late MockBookmarkLocalDataSource mockBookmarkLocalDataSource;
 
-  MockBaseService mockBaseService = MockBaseService();
+  late BookmarkRepositoryImpl bookmarkRepositoryImpl;
 
   final List<SourceModel> sources = <SourceModel>[
     SourceModel(
@@ -92,25 +98,26 @@ void main() {
 
   setUp(
     () {
-      homeRemoteDataSource = HomeRemoteDataSourceImpl(
-        baseRestService: mockBaseService,
+      mockBookmarkLocalDataSource = MockBookmarkLocalDataSource();
+      bookmarkRepositoryImpl = BookmarkRepositoryImpl(
+        bookmarkLocalDataSource: mockBookmarkLocalDataSource,
       );
     },
   );
 
-  // ---------- Get sources ---------- //
+  // ---------- Get bookmark local ---------- //
   test(
-    'Get sources api and throw DioException',
+    'Get bookmark local and throw HiveError',
     () async {
       when(
-        mockBaseService.getSources(),
+        mockBookmarkLocalDataSource.getBookmarksLocal(),
       ).thenThrow(
-        DioException(
-          requestOptions: RequestOptions(),
+        HiveError(
+          '',
         ),
       );
       try {
-        await homeRemoteDataSource.getSources();
+        await bookmarkRepositoryImpl.getBookmarksLocal();
         assert(false);
       } catch (exception) {
         assert(true);
@@ -119,76 +126,45 @@ void main() {
   );
 
   test(
-    'Get sources api and return source list',
+    'Get top bookmark local and return articles list',
     () async {
       when(
-        mockBaseService.getSources(),
+        mockBookmarkLocalDataSource.getBookmarksLocal(),
       ).thenAnswer(
-        (_) async => ResponseSourcesModel(
-          sources: sources,
-        ),
+        (_) async => articles,
       );
-      final ResponseSourcesModel response =
-          await homeRemoteDataSource.getSources();
+      final Either<HiveFailure, List<ArticleModel>> response =
+          await bookmarkRepositoryImpl.getBookmarksLocal();
       expect(
-        sources,
-        response.sources,
+        articles,
+        response.toOption().toNullable()!,
       );
     },
   );
 
-  // ---------- Get top headlines ---------- //
+  // ---------- Save bookmark local ---------- //
   test(
-    'Get top headlines api and throw DioException',
+    'Save bookmark local and throw HiveError',
     () async {
       when(
-        mockBaseService.getTopHeadlines(
+        mockBookmarkLocalDataSource.saveBookmarkLocal(
+          any,
           any,
         ),
       ).thenThrow(
-        DioException(
-          requestOptions: RequestOptions(),
+        HiveError(
+          '',
         ),
       );
       try {
-        await homeRemoteDataSource.getTopHeadlines(
-          RequestTopHeadlinesModel(
-            sources: 'bbc-sport',
-            page: 1,
-            pageSize: 20,
-          ),
+        await bookmarkRepositoryImpl.saveBookmarkLocal(
+          ArticleModel(),
+          true,
         );
         assert(false);
       } catch (exception) {
         assert(true);
       }
-    },
-  );
-
-  test(
-    'Get top headlines api and return articles list',
-    () async {
-      when(
-        mockBaseService.getTopHeadlines(
-          any,
-        ),
-      ).thenAnswer(
-        (_) async => ResponseTopHeadlinesModel(
-          articles: articles,
-        ),
-      );
-      final ResponseTopHeadlinesModel response =
-          await homeRemoteDataSource.getTopHeadlines(
-        RequestTopHeadlinesModel(
-          sources: 'bbc-sport',
-          page: 1,
-          pageSize: 20,
-        ),
-      );
-      expect(
-        articles,
-        response.articles,
-      );
     },
   );
 }

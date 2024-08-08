@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/core/helpers/app_constants.dart';
-import 'package:news_app/generated/l10n.dart';
 
-class HomeBodyEmptyWidget extends StatefulWidget {
-  const HomeBodyEmptyWidget({super.key});
+class HomeBodyEmptyWidget extends StatelessWidget {
+  final String text;
 
-  @override
-  HomeBodyEmptyWidgetState createState() => HomeBodyEmptyWidgetState();
-}
+  const HomeBodyEmptyWidget({
+    super.key,
+    required this.text,
+  });
 
-class HomeBodyEmptyWidgetState extends State<HomeBodyEmptyWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,7 +24,7 @@ class HomeBodyEmptyWidgetState extends State<HomeBodyEmptyWidget> {
           height: 12.0,
         ),
         Text(
-          S.of(context).mainCanNotFindAnything,
+          text,
           textAlign: TextAlign.center,
           style: AppConstants.textHeadingH5.copyWith(
             color: Theme.of(context).colorScheme.surfaceDim,

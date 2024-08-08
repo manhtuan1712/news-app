@@ -5,7 +5,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:news_app/core/api/error/failures.dart';
 import 'package:news_app/core/helpers/enums.dart';
-import 'package:news_app/features/authentication/data/datasources/authetication_remote_data_source.dart';
+import 'package:news_app/features/authentication/data/datasource/authentication_remote_data_source.dart';
 import 'package:news_app/features/authentication/data/repository/authentication_repository_impl.dart';
 
 import 'authentication_repository_test.mocks.dart';
